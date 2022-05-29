@@ -5,7 +5,7 @@ import { MainLayoutModule} from "../../shared-components/src/app/main-layout/mai
 
 const routes: Routes = [
   {path: '', redirectTo:'manage-reports', pathMatch: 'full'},
-  {path: 'manage-reports', component:MainLayoutComponent, loadChildren:() => import('./manage-reports/manage-reports.module').then(m => m.ManageReportsModule)},
+  {path: 'manage-reports', loadChildren:() => import('./manage-reports/manage-reports.module').then(m => m.ManageReportsModule)},
   {path: '**', redirectTo: 'manage-reports'}
 ];
 
