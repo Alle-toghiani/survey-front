@@ -3,3 +3,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'assets/fonts/fontiran.scss';
+
+body {
+  direction: rtl;
+  @apply bg-neutral text-primary font-iranyekan m-0;
+}
