@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ManageReportsRoutingModule } from './manage-reports-routing.module';
 import { ReportsListComponent } from './components/reports-list/reports-list.component';
-import { WidgetContainerModule} from "../../../shared-components/src/app/widget-container/widget-container.module";
+import { WidgetContainerModule} from "@shared-components/src/app/widget-container/widget-container.module";
+import { TablesModule} from "@shared-components/src/app/tables/tables.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { WidgetContainerModule} from "../../../shared-components/src/app/widget-
   imports: [
     CommonModule,
     ManageReportsRoutingModule,
-    WidgetContainerModule
+    WidgetContainerModule,
+    TablesModule
   ]
 })
 export class ManageReportsModule { }
