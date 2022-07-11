@@ -5,6 +5,7 @@ import { ManageReportsRoutingModule } from './manage-reports-routing.module';
 import { ReportsListComponent } from './components/reports-list/reports-list.component';
 import { WidgetContainerModule} from "@shared-components/src/app/widget-container/widget-container.module";
 import { TablesModule} from "@shared-components/src/app/tables/tables.module";
+import { TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TablesModule} from "@shared-components/src/app/tables/tables.module";
     CommonModule,
     ManageReportsRoutingModule,
     WidgetContainerModule,
-    TablesModule
+    TablesModule,
+    TranslateModule
   ]
 })
 export class ManageReportsModule { }
