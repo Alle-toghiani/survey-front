@@ -1,6 +1,18 @@
 <div class="main-container w-full pt-15px">
   <app-widget-container title="لیست گزارش ها">
-    <p class="mx-10px">reports-list works!</p>
-  </app-widget-container>
+    <app-table [listOfData]="survey.data"
+               [headers]="[
+               'عنوان سوال',
+               'ستون دوم'
+               ]"
+               [tableCells]="[td_1,td_2]"
+    ></app-table>
 
+    <ng-template #td_1 let-data="data">
+      <div>{{data.title}}</div>
+    </ng-template>
+    <ng-template #td_2 let-data="data">
+      <div>{{data.id}}</div>
+    </ng-template>
+  </app-widget-container>
 </div>
