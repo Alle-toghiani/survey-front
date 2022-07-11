@@ -1,0 +1,18 @@
+{
+  "common": {
+    "operations": {
+      "delete": "حذف",
+      "details": "جزئیات"
+    }
+  },
+  "reports-list": {
+    "table": {
+      "title": "عنوان سوال",
+      "choices-count": "تعداد گزینه",
+      "chart-type": "نوع نمودار",
+      "description": "توضیحات",
+      "visibility":"نمایش",
+      "operation": "عملیات"
+    }
+  }
+}
