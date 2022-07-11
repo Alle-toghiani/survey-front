@@ -1,6 +1,6 @@
 export interface SurveyModel {
   id: number;
-  data: {[key:string|number] : SurveyQuestion};
+  data: SurveyQuestion[];
   name: string;
   language: number;
   active: boolean;
