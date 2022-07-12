@@ -1,18 +1,37 @@
 <div class="main-container w-full pt-15px">
   <app-widget-container title="لیست گزارش ها">
-    <app-table [listOfData]="survey.data"
+    <app-table [listOfData]="!!survey ? survey.data : []"
                [headers]="[
-               'عنوان سوال',
-               'ستون دوم'
+               'reports-list.table.title'|translate,
+               'reports-list.table.choices-count'|translate,
+               'reports-list.table.chart-type'|translate,
+               'reports-list.table.description'|translate,
+               'reports-list.table.visibility'|translate,
+               'reports-list.table.operation'|translate
                ]"
-               [tableCells]="[td_1,td_2]"
+               [tableCells]="[td_1,td_2,td_3,td_4,td_5,td_6]"
     ></app-table>
 
     <ng-template #td_1 let-data="data">
       <div>{{data.title}}</div>
     </ng-template>
     <ng-template #td_2 let-data="data">
-      <div>{{data.id}}</div>
+      <div>{{data.choices.length}}</div>
+    </ng-template>
+    <ng-template #td_3 let-data="data">
+      <div>{{data.charts.length > 0 ? data.charts[0].type : 'NO_CHART'}}</div>
+    </ng-template>
+    <ng-template #td_4 let-data="data">
+      <div>{{data.charts.length > 0 ? !!(data.charts[0].caption) : false}}</div>
+    </ng-template>
+    <ng-template #td_5 let-data="data">
+      <div>{{data.isVisible === undefined ? true : data.isVisible}}</div>
+    </ng-template>
+    <ng-template #td_6 let-data="data">
+      <div class="flex gap-10px justify-center">
+        <button nz-button nzType="default" nzDanger >{{"common.operations.delete"|translate}}</button>
+        <button nz-button nzType="primary">{{"common.operations.details"|translate}}</button>
+      </div>
     </ng-template>
   </app-widget-container>
 </div>
