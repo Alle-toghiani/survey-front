@@ -42,6 +42,7 @@ interface SurveyQuestion{
   question_number_is_hidden: boolean;
   related_group: string;
   allow_multiple_select: boolean;
+  isVisible: boolean;
 }
 
 interface SurveyCharts{
