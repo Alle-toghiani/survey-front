@@ -6,6 +6,7 @@ import { ReportsListComponent } from './components/reports-list/reports-list.com
 import { WidgetContainerModule} from "@shared-components/src/app/widget-container/widget-container.module";
 import { TablesModule} from "@shared-components/src/app/tables/tables.module";
 import { TranslateModule} from "@ngx-translate/core";
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TranslateModule} from "@ngx-translate/core";
     ManageReportsRoutingModule,
     WidgetContainerModule,
     TablesModule,
+    NzButtonModule,
     TranslateModule
   ]
 })
