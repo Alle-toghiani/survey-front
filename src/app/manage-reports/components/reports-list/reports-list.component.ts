@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {MainLayoutService} from "../../../services/main-layout.service";
-import {HeaderModel} from "../../../../../shared-components/src/app/main-layout/models/header.model";
+import {HeaderModel} from "@shared-components/src/app/main-layout/models/header.model";
 import {Router, ActivatedRoute, ParamMap} from "@angular/router";
 import {SurveyModel} from "../../../models/survey.model";
 import {Subscription} from "rxjs";
 import {ManageReportsHttpService} from "../../services/manage-reports-http.service";
+import { RoutesEnum} from "../../../enums/routes.enum";
 
 @Component({
   selector: 'app-reports-list',
@@ -29,7 +30,7 @@ export class ReportsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe( params => {
-      this.surveyId = params['id'];
+      this.surveyId = params[RoutesEnum.SURVEY_ID_PARAM];
       this.isRouteValid(this.surveyId) ? this.getSurveyInfo(+this.surveyId) : this.redirectToNotFound();
     })
   }
