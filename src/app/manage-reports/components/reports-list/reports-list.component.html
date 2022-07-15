@@ -30,7 +30,7 @@
     <ng-template #td_6 let-data="data">
       <div class="flex gap-10px justify-center">
         <button nz-button nzType="default" nzDanger >{{"common.operations.delete"|translate}}</button>
-        <button nz-button nzType="primary">{{"common.operations.details"|translate}}</button>
+        <button nz-button nzType="primary" [routerLink]="['details', data.id]">{{"common.operations.details"|translate}}</button>
       </div>
     </ng-template>
   </app-widget-container>
