@@ -6,6 +6,7 @@
     }
   },
   "reports-list": {
+    "widget-title": "لیست سوالات",
     "table": {
       "title": "عنوان سوال",
       "choices-count": "تعداد گزینه",

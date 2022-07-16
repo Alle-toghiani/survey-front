@@ -1,5 +1,5 @@
 <div class="main-container w-full pt-15px">
-  <app-widget-container title="لیست گزارش ها">
+  <app-widget-container [title]="'reports-list.widget-title' | translate">
     <app-table [listOfData]="!!survey ? survey.data : []"
                [headers]="[
                'reports-list.table.title'|translate,
