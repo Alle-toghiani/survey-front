@@ -15,5 +15,8 @@
       "visibility":"نمایش",
       "operation": "عملیات"
     }
+  },
+  "survey-details": {
+    "widget-title": "جزئیات نمودار"
   }
 }
