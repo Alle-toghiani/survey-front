@@ -5,6 +5,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/h
 import { ResponseConfigInterceptor} from "./interceptors/response-config.interceptor";
 
 import { AngularSvgIconModule} from "angular-svg-icon";
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-lay
 
 import { TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import { TranslateHttpLoader} from "@ngx-translate/http-loader";
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,6 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
       AppRoutingModule,
       MainLayoutModule,
       HttpClientModule,
+      NzNotificationModule,
       AngularSvgIconModule.forRoot(),
       TranslateModule.forRoot({
         defaultLanguage: 'fa',
