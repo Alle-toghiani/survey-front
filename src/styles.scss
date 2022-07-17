@@ -25,3 +25,14 @@ body {
     margin: 0;
   }
 }
+
+[nz-button] {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  [nz-icon] {
+    font-size: 20px !important;
+    display: flex;
+    margin: 0 !important;
+  }
+}
