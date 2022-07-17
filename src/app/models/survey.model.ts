@@ -26,7 +26,7 @@ export interface SurveyModel {
   }
 }
 
-interface SurveyQuestion{
+export interface SurveyQuestion{
   choices: SurveyChoice[];
   charts: SurveyCharts;
   id: number;
