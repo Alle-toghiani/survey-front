@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainLayoutComponent} from "../../shared-components/src/app/main-layout/main-layout.component";
-import { MainLayoutModule} from "../../shared-components/src/app/main-layout/main-layout.module";
+import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
 
 const routes: Routes = [
   {path: '', redirectTo:'manage-reports', pathMatch: 'full'},
