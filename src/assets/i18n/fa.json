@@ -18,5 +18,9 @@
   },
   "survey-details": {
     "widget-title": "جزئیات نمودار"
+  },
+  "not-found-page": {
+    "title": "صفحه مورد نظر پیدا نشد!",
+    "button-title": "انتقال به داشبورد"
   }
 }
