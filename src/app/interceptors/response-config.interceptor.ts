@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 // import { TranslateService} from "@ngx-translate/core";
 
-// Make sure you import BrowserAnimationsModule & NzNotificationModule to your app.module
+// Make sure you import BrowserAnimationsModule & NzNotificationModule to your app.module inorder for notification to work
 
 @Injectable()
 export class ResponseConfigInterceptor implements HttpInterceptor {
