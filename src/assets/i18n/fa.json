@@ -22,5 +22,13 @@
   "not-found-page": {
     "title": "صفحه مورد نظر پیدا نشد!",
     "button-title": "انتقال به داشبورد"
+  },
+  "notification": {
+    "type": {
+      "success": "موفقیت آمیز",
+      "info": "اطلاعیه",
+      "warning": "هشدار",
+      "error": "خطا"
+    }
   }
 }
