@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 
 import { ResponseConfigInterceptor} from "./interceptors/response-config.interceptor";
@@ -25,6 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
     imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       AppRoutingModule,
       MainLayoutModule,
       HttpClientModule,
