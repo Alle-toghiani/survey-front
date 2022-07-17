@@ -10,14 +10,13 @@ import {
 import { Observable, Subscription, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { TranslateService} from "@ngx-translate/core";
+// import { TranslateService} from "@ngx-translate/core";
 
 @Injectable()
 export class ResponseConfigInterceptor implements HttpInterceptor {
   subscriptions = new Subscription();
   constructor(
-    private notification: NzNotificationService,
-    private translateService: TranslateService
+    private notification: NzNotificationService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -46,18 +45,18 @@ export class ResponseConfigInterceptor implements HttpInterceptor {
   createErrorNotification(errorMessage: string): void{
     this.notification.create(
       "error",
-      this.translator("notification.type.error"),
+      "خطا",
       errorMessage
     )
   }
 
-  translator(word: string) {
-    let translatedWord = "";
-    this.subscriptions.add(this.translateService.get(word.toLowerCase()).subscribe(
-      result => {
-        translatedWord = result;
-      }
-    ));
-    return translatedWord;
-  }
+  // translator(word: string) {
+  //   let translatedWord = "";
+  //   this.subscriptions.add(this.translateService.get(word.toLowerCase()).subscribe(
+  //     result => {
+  //       translatedWord = result;
+  //     }
+  //   ));
+  //   return translatedWord;
+  // }
 }
