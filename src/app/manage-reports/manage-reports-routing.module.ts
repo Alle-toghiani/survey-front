@@ -9,11 +9,11 @@ import { SurveyDetailsComponent} from "./components/survey-details/survey-detail
 const routes: Routes = [
   { path: ':' + RoutesEnum.SURVEY_ID_PARAM,
     component: ReportsListComponent,
-    resolve: { surveyData: SurveyResolver} },
+    resolve: { surveyResolverData: SurveyResolver} },
 
   { path: ':' + RoutesEnum.SURVEY_ID_PARAM + '/details/:' + RoutesEnum.QUESTION_ID_PARAM,
     component: SurveyDetailsComponent,
-    resolve: { surveyData: SurveyResolver}}
+    resolve: { surveyResolverData: SurveyResolver}}
 ];
 
 @NgModule({
