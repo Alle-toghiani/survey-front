@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+
+import { ResponseConfigInterceptor} from "./interceptors/response-config.interceptor";
 
 import { AngularSvgIconModule} from "angular-svg-icon";
 
@@ -34,7 +36,9 @@ export function createTranslateLoader(http: HttpClient) {
         }
       })
     ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseConfigInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
