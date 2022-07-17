@@ -6,11 +6,10 @@ import { AngularSvgIconModule} from "angular-svg-icon";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MainLayoutModule} from "../../shared-components/src/app/main-layout/main-layout.module";
+import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
 
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-
+import { TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import { TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
