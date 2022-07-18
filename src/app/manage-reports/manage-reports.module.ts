@@ -7,12 +7,10 @@ import { WidgetContainerModule} from "@shared-components/src/app/widget-containe
 import { TablesModule} from "@shared-components/src/app/tables/tables.module";
 import { TranslateModule} from "@ngx-translate/core";
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { SurveyDetailsComponent } from './components/survey-details/survey-details.component';
 
 @NgModule({
   declarations: [
-    ReportsListComponent,
-    SurveyDetailsComponent
+    ReportsListComponent
   ],
   imports: [
     CommonModule,
