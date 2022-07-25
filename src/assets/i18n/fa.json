@@ -30,5 +30,17 @@
       "warning": "هشدار",
       "error": "خطا"
     }
+  },
+
+  "charts": {
+    "type": {
+      "bar": "میله ای",
+      "pie": "دایره ای",
+      "doughnut": "دونات",
+      "line": "خطی",
+      "polarArea": "قطبی",
+      "radar": "رادار"
+    },
+    "chart-type-label": "نوع نمودار"
   }
 }
