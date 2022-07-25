@@ -28,7 +28,7 @@ export interface SurveyModel {
 
 export interface SurveyQuestion{
   choices: SurveyChoice[];
-  charts: SurveyCharts;
+  charts: SurveyCharts[];
   id: number;
   title: string;
   type: number;
