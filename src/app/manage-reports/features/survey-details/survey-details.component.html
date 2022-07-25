@@ -1,5 +1,45 @@
 <app-widget-container [title]="'survey-details.widget-title' | translate">
   <div class="chart-config-container">
-  <pre>{{questionData|json}}</pre>
+    <nz-input-group [nzAddOnBefore]="'charts.chart-type-label'|translate">
+<!--      <button nz-button-->
+<!--              class="w-[100px]">-->
+<!--        noe nemudar-->
+<!--        <span><i nz-icon nzType="down"></i></span>-->
+<!--      </button>-->
+      <nz-select [ngModel]="selectedChartType" class="w-[150px]">
+        <nz-option [nzValue]="menuItem"
+                   [nzLabel]="'charts.type.'+ menuItem | translate"
+                   class="text-start"
+                   nzCustomContent="true"
+                   *ngFor="let menuItem of chartTypesValues"
+                   nz-tooltip
+                   [nzTooltipTitle]="menuItem + ' chart'">
+          <div class="w-full flex items-center gap-[10px]"
+               [ngClass]="{'text-main fill-main': menuItem === selectedChartType}"
+               dir="rtl">
+            <span>{{'charts.type.'+ menuItem | translate}}</span>
+            <svg-icon [src]="'assets/images/svg/chart-icons/' + menuItem + '-chart-svgrepo-com.svg'"
+                      class="flex"
+                      [svgStyle]="{'width.px': 25, 'height.px':25}"></svg-icon>
+          </div>
+        </nz-option>
+      </nz-select>
+    </nz-input-group>
+<!--    <nz-dropdown-menu #chartTypeMenu="nzDropdownMenu">-->
+<!--      <div class="flex">-->
+<!--        <div class="bg-white max-h-[150px] max-w-[200px]">-->
+<!--          <h1>Lorem ipsum dolor sit amet.</h1>-->
+<!--        </div>-->
+<!--        <ul nz-menu nzSelectable class="w-[100px] text-end max-h-[150px] overflow-y-scroll overflow-x-hidden">-->
+<!--          <li class="justify-end"-->
+<!--              nz-menu-item-->
+<!--              *ngFor="let menuItem of chartTypesValues"-->
+<!--              nz-tooltip-->
+<!--              [nzTooltipTitle]="menuItem + ' chart'">-->
+<!--            <span>{{"charts.type."+ menuItem | translate}}</span>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </nz-dropdown-menu>-->
   </div>
 </app-widget-container>
