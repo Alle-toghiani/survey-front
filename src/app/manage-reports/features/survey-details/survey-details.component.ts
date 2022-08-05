@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute} from "@angular/router";
 
 import Chart from 'chart.js/auto';
@@ -46,11 +46,13 @@ type ChartTypes = typeof ChartTypes[keyof typeof ChartTypes];
   templateUrl: './survey-details.component.html',
   styleUrls: ['./survey-details.component.scss']
 })
-export class SurveyDetailsComponent implements OnInit {
+export class SurveyDetailsComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('canvas') canvasRef: ElementRef;
+  ctx;
   chart;
   questionData: SurveyQuestion;
-  isLoadedChart = false;
+  isLoading = true;
   selectedChartType: ChartTypes;
   chartInvalidError = false;
 
@@ -59,11 +61,16 @@ export class SurveyDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadDataInit();
+    this.questionData = (this.route.snapshot.data['surveyResolverData'] as SharedModel<SurveyQuestion>).data;
   }
 
-  loadDataInit(): void{
-    this.questionData = (this.route.snapshot.data['surveyResolverData'] as SharedModel<SurveyQuestion>).data;
+  ngAfterViewInit() {
+    if (this.questionData){
+      this.initChart();
+    }
+  }
+
+  initChart(): void{
     const chartType = this.questionData.charts[0].type;
     if (chartType && ChartTypes[chartType]) {
       this.selectedChartType = ChartTypes[chartType];
@@ -81,7 +88,9 @@ export class SurveyDetailsComponent implements OnInit {
       datasetFrequecy.push(choice.frequency)
     })
 
-    this.chart = new Chart('canvas', {
+    this.isLoading = false;
+    this.ctx = this.canvasRef.nativeElement.getContext('2d');
+    this.chart = new Chart(this.ctx, {
       type: this.selectedChartType as keyof ChartTypeRegistry,
       data: {
         labels: chartLabels,
@@ -105,14 +114,14 @@ export class SurveyDetailsComponent implements OnInit {
         }
       }
     });
-    this.isLoadedChart = true;
+    this.isLoading = false;
   }
 
   reloadChart(event):void{
     if (event !== this.selectedChartType){
       this.selectedChartType = event;
       this.chart.destroy();
-      this.isLoadedChart = false;
+      this.isLoading = true;
       this.generateChartData();
     }
   }
