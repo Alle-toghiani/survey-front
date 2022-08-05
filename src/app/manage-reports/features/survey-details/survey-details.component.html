@@ -1,6 +1,9 @@
 <app-widget-container [title]="'survey-details.widget-title' | translate">
+  <nz-divider [nzText]="'survey-details.title'|translate" nzOrientation="left"></nz-divider>
+  <div class="question-title-container">{{questionData.title}}</div>
 
-  <div class="details-container min-h-[500px]">
+  <nz-divider [nzText]="'survey-details.chart-config'|translate" nzOrientation="left"></nz-divider>
+  <div class="details-container">
     <div class="chart-config-container">
       <div class="config-container">
         <nz-input-group [nzAddOnBefore]="'charts.chart-type-label'|translate" dir="rtl">
@@ -25,9 +28,14 @@
           </nz-select>
         </nz-input-group>
       </div>
-      <div class="chart-container"  >
-        <canvas id="canvas" class="max-h-[300px]" >{{chart}}</canvas>
+      <div class="chart-container">
+        <canvas #canvas class="max-h-[300px]" >{{chart}}</canvas>
       </div>
     </div>
   </div>
+
+  <ng-container *ngIf="questionData.charts[0].caption">
+    <nz-divider [nzText]="'survey-details.chart-description'|translate" nzOrientation="left"></nz-divider>
+    <div class="chart-caption-title">{{questionData.charts[0].caption}}</div>
+  </ng-container>
 </app-widget-container>
