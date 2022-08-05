@@ -1,24 +1,33 @@
 <app-widget-container [title]="'survey-details.widget-title' | translate">
-  <div class="chart-config-container">
-    <nz-input-group [nzAddOnBefore]="'charts.chart-type-label'|translate">
-      <nz-select [ngModel]="selectedChartType" class="w-[150px]">
-        <nz-option [nzValue]="menuItem"
-                   [nzLabel]="'charts.type.'+ menuItem | translate"
-                   class="text-start"
-                   nzCustomContent="true"
-                   *ngFor="let menuItem of chartTypesValues"
-                   nz-tooltip
-                   [nzTooltipTitle]="menuItem + ' chart'">
-          <div class="w-full flex items-center gap-[10px]"
-               [ngClass]="{'text-main fill-main': menuItem === selectedChartType}"
-               dir="rtl">
-            <span>{{'charts.type.'+ menuItem | translate}}</span>
-            <svg-icon [src]="'assets/images/svg/chart-icons/' + menuItem + '-chart-svgrepo-com.svg'"
-                      class="flex"
-                      [svgStyle]="{'width.px': 25, 'height.px':25}"></svg-icon>
-          </div>
-        </nz-option>
-      </nz-select>
-    </nz-input-group>
+
+  <div class="details-container min-h-[500px]">
+    <div class="chart-config-container">
+      <div class="config-container">
+        <nz-input-group [nzAddOnBefore]="'charts.chart-type-label'|translate" dir="rtl">
+          <nz-select [ngModel]="selectedChartType" class="w-[150px]">
+            <nz-option class="text-start"
+                       *ngFor="let menuItem of chartTypesValues"
+                       [nzValue]="menuItem"
+                       [nzLabel]="'charts.type.'+ menuItem | translate"
+                       nzCustomContent="true"
+                       nz-tooltip
+                       [nzTooltipTitle]="menuItem + ' chart'">
+              <div class="w-full flex items-center gap-[10px]"
+                   (click)="reloadChart(menuItem)"
+                   [ngClass]="{'text-main fill-main': menuItem == selectedChartType}"
+                   dir="rtl">
+                <span>{{'charts.type.'+ menuItem | translate}}</span>
+                <svg-icon [src]="'assets/images/svg/chart-icons/' + menuItem + '-chart-svgrepo-com.svg'"
+                          class="flex"
+                          [svgStyle]="{'width.px': 25, 'height.px':25}"></svg-icon>
+              </div>
+            </nz-option>
+          </nz-select>
+        </nz-input-group>
+      </div>
+      <div class="chart-container"  >
+        <canvas id="canvas" class="max-h-[300px]" >{{chart}}</canvas>
+      </div>
+    </div>
   </div>
 </app-widget-container>
