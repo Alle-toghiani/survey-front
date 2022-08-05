@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from "@angular/router";
 
 import Chart from 'chart.js/auto';
-import { ChartTypeRegistry} from "chart.js";
+import { ChartTypeRegistry } from "chart.js";
 
-import { SurveyModel, SurveyQuestion} from "../../../models/survey.model";
-import { SharedModel} from "../../../models/shared.model";
+import { SurveyQuestion } from "../../../models/survey.model";
+import { SharedModel } from "../../../models/shared.model";
 
 const ChartTypes = {
   1: "bar",
