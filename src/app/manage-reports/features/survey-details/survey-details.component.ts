@@ -18,6 +18,8 @@ const ChartTypes = {
   RADAR : "radar",
 }
 
+type ChartTypes = typeof ChartTypes[keyof typeof ChartTypes];
+
 const colors = [
   'rgb(255, 99, 132)',
   'rgb(54, 162, 235)',
@@ -28,18 +30,7 @@ const colors = [
   'rgb(201, 203, 207)'
 ]
 
-interface ChartData {
-  labels: string[];
-  datasets: ChartDataset[]
-}
-interface ChartDataset {
-  type?: ChartTypes;
-  label?: string;
-  backgroundColor: string | string[];
-  data: number[]
-}
 
-type ChartTypes = typeof ChartTypes[keyof typeof ChartTypes];
 
 @Component({
   selector: 'app-survey-details',
