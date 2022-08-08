@@ -10,12 +10,12 @@ import { SharedModel } from "../../../models/shared.model";
 const ChartTypes = {
   1: "bar",
   2: "pie",
-  BAR : "bar",
-  PIE : "pie",
-  DOUGHNUT : "doughnut",
-  LINE : "line",
-  POLAR_AREA : "polarArea",
-  RADAR : "radar",
+  bar : "bar",
+  pie : "pie",
+  doughnut : "doughnut",
+  line : "line",
+  polarArea : "polarArea",
+  radar : "radar",
 }
 
 type ChartTypes = typeof ChartTypes[keyof typeof ChartTypes];
