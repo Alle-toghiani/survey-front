@@ -1,8 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
-import {MainLayoutService} from "./services/main-layout.service";
-import {HeaderModel} from "../../shared-components/src/app/main-layout/models/header.model";
-import {Subscription} from "rxjs";
-import {ActionbarModel} from "../../shared-components/src/app/main-layout/models/actionbar.model";
+import { Component, OnDestroy} from '@angular/core';
+import { Subscription } from "rxjs";
+
+import { MainLayoutService } from "./services/main-layout.service";
+import { HeaderModel } from "@shared-components/src/app/main-layout/models/header.model";
+import { ActionbarModel } from "@shared-components/src/app/main-layout/models/actionbar.model";
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,11 @@ export class AppComponent implements OnDestroy{
     this.subscriptions.add(
       this.layoutService.headerConfigSubject.subscribe(header => {
         this.headerConfig = header;
+      })
+    )
+    this.subscriptions.add(
+      this.layoutService.actionbarConfigSubject.subscribe(actionbar => {
+        this.actionbarConfig = actionbar;
       })
     )
   }
