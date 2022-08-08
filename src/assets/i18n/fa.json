@@ -17,7 +17,11 @@
     }
   },
   "survey-details": {
-    "widget-title": "جزئیات نمودار"
+    "save-changes": "ذخیره تغییرات",
+    "widget-title": "جزئیات نمودار",
+    "title": "عنوان سوال",
+    "chart-config": "ویرایش جزئیات نمودار",
+    "chart-description": "توضیحات نمودار"
   },
   "not-found-page": {
     "title": "صفحه مورد نظر پیدا نشد!",
