@@ -1,23 +1,33 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 
-import { ResponseConfigInterceptor} from "./interceptors/response-config.interceptor";
-
+import { TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
+import { TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { AngularSvgIconModule} from "angular-svg-icon";
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
-
-import { TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import { TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { ResponseNotificationInterceptor } from "./services/http-interceptors/response-notification.interceptor";
 
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function translateFactory(translate: TranslateService) {
+  return async () => {
+    translate.setDefaultLang('fa');
+    translate.use('fa');
+    return new Promise<void>(resolve => {
+      translate.onLangChange.subscribe(() => {
+        resolve();
+      });
+    });
+  };
 }
 
 @NgModule({
@@ -42,7 +52,17 @@ export function createTranslateLoader(http: HttpClient) {
       })
     ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ResponseConfigInterceptor, multi: true }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: translateFactory,
+      deps: [TranslateService],
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseNotificationInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
