@@ -13,7 +13,6 @@ import { SurveyQuestion } from "../../../models/survey.model";
 import { SharedModel } from "../../../models/shared.model";
 import { RoutesEnum } from "../../../enums/routes.enum";
 
-
 const ChartTypes = {
   1: "bar",
   2: "pie",
@@ -34,10 +33,12 @@ const colors = [
   'rgb(255, 159, 64)',
   'rgb(153, 102, 255)',
   'rgb(255, 205, 86)',
-  'rgb(201, 203, 207)'
+  'rgb(201, 203, 207)',
+  '#00ff00',
+  '#ff00ff',
+  '#00ffff',
+  '#ffa500'
 ]
-
-
 
 @Component({
   selector: 'app-survey-details',
