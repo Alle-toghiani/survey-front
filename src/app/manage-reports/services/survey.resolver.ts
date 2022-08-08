@@ -25,11 +25,12 @@ export class SurveyResolver implements Resolve<SharedModel<SurveyModel | SurveyQ
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<SharedModel<SurveyModel | SurveyQuestion>> | Promise<SharedModel<SurveyModel | SurveyQuestion>> | SharedModel<SurveyModel | SurveyQuestion>{
     const sid = route.params[RoutesEnum.SURVEY_ID_PARAM];
     const qid = route.params[RoutesEnum.QUESTION_ID_PARAM];
-    if ( this.validatorService.isSurveyIdValid(sid) && this.validatorService.isQuestionIdValid(qid) ) {
-      return this.surveyHttpService.getSurveyQuestionDetails(sid, qid)
-      //TODO handle error
-    } else if (this.validatorService.isSurveyIdValid(sid)) {
+    if ( this.validatorService.isSurveyIdValid(sid)) {
+      if (this.validatorService.isQuestionIdValid(qid)){
+        return this.surveyHttpService.getSurveyQuestionDetails(sid, qid);
+      }
       return this.surveyHttpService.getSurvey(sid);
+      //TODO handle error
     } else {
       this.router.navigate(['/'+RoutesEnum.NOT_FOUND_PAGE])
       return EMPTY;
