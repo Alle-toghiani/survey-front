@@ -29,6 +29,7 @@ export interface SurveyModel {
 export interface SurveyQuestion{
   choices: SurveyChoice[];
   charts: SurveyCharts[];
+  customChartSettings?: CustomChartSettings;
   id: number;
   title: string;
   type: number;
@@ -43,6 +44,9 @@ export interface SurveyQuestion{
   related_group: string;
   allow_multiple_select: boolean;
   isVisible: boolean;
+}
+export interface CustomChartSettings{
+  type: string;
 }
 
 interface SurveyCharts{
