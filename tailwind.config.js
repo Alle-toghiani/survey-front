@@ -78,7 +78,7 @@ module.exports = {
       "primary": "#094067",
       "secondary":"#90b4ce",
       "tertiary":"#ef4565",
-      "success":"#00ebc7",
+      "success":"#52c41a",
       "warning":"#ff8906",
       "error":"#ef4565",
       "neutral":"#e8ecf6",
