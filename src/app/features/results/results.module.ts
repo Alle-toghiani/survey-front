@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ResultsRoutingModule } from './results-routing.module';
 import { ResultsContainerComponent } from './components/results-container/results-container.component';
+import { ResultItemComponent } from './components/result-item/result-item.component';
 
 
 @NgModule({
   declarations: [
-    ResultsContainerComponent
+    ResultsContainerComponent,
+    ResultItemComponent
   ],
   imports: [
     CommonModule,
