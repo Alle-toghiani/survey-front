@@ -1,1 +1,9 @@
-<p>result-item works!</p>
+<div class="item bg-white rounded-md" *ngIf="data.charts.length>0">
+  <nz-divider [nzText]="data.title" nzOrientation="center"></nz-divider>
+
+<!--  chart component-->
+  <ng-container *ngIf="data.charts[0].caption">
+    <nz-divider [nzText]="'survey-details.chart-description'|translate" nzOrientation="center"></nz-divider>
+    <div class="chart-caption-title">{{data.charts[0].caption}}</div>
+  </ng-container>
+</div>
