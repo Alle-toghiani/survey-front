@@ -4,13 +4,13 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { EMPTY, map, Observable, of} from 'rxjs';
 
-import { RoutesEnum} from "../../enums/routes.enum";
-import { SharedModel} from "../../models/shared.model";
-import { SurveyModel, SurveyQuestion} from "../../models/survey.model";
-import { ManageReportsHttpService} from "./manage-reports-http.service";
-import { CustomValidatorsService} from "../../services/custom-validators.service";
+import { EMPTY, Observable } from 'rxjs';
+
+import { RoutesEnum } from "../enums/routes.enum";
+import { SharedModel, SurveyModel, SurveyQuestion } from "@models";
+import { ManageReportsHttpService } from "../manage-reports/services/manage-reports-http.service";
+import { CustomValidatorsService } from "./custom-validators.service";
 
 @Injectable({
   providedIn: 'root'
