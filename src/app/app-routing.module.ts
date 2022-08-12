@@ -6,11 +6,11 @@ import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-lay
 import { NotFoundPageComponent} from "./common/not-found-page/not-found-page.component";
 
 const routes: Routes = [
-  {path: '', redirectTo:'manage-reports', pathMatch: 'full'},
-  {path: RoutesEnum.DASHBOARD, redirectTo: 'manage-reports'},
+  {path: '', redirectTo:RoutesEnum.SURVEYS, pathMatch: 'full'},
+  {path: RoutesEnum.DASHBOARD, redirectTo: RoutesEnum.SURVEYS, },
   {path: RoutesEnum.SURVEYS, loadChildren:() => import('./manage-reports/manage-reports.module').then(m => m.ManageReportsModule)},
   {path: RoutesEnum.NOT_FOUND_PAGE, loadComponent: () => import('./common/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent)},
-  {path: '**', redirectTo: 'manage-reports'}
+  {path: '**', redirectTo: RoutesEnum.NOT_FOUND_PAGE}
 ];
 
 @NgModule({
