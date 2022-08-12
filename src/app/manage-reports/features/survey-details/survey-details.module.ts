@@ -15,6 +15,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { SurveyDetailsComponent} from "./survey-details.component";
 import { WidgetContainerModule} from "@shared-components/src/app/widget-container/widget-container.module";
+import { ViewChartModule} from "@shared-components/src/app/view-chart/view-chart.module";
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     TranslateModule,
     AngularSvgIconModule,
     WidgetContainerModule,
+    ViewChartModule,
     NzButtonModule,
     NzDropDownModule,
     NzToolTipModule,
