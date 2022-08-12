@@ -1,8 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
-import Chart from 'chart.js/auto';
-import { ChartTypeRegistry } from "chart.js";
 import { Subscription} from "rxjs";
 import { TranslateService} from "@ngx-translate/core";
 
@@ -26,20 +24,6 @@ const ChartTypes = {
 
 type ChartTypes = typeof ChartTypes[keyof typeof ChartTypes];
 
-const colors = [
-  'rgb(255, 99, 132)',
-  'rgb(54, 162, 235)',
-  'rgb(75, 192, 192)',
-  'rgb(255, 159, 64)',
-  'rgb(153, 102, 255)',
-  'rgb(255, 205, 86)',
-  'rgb(201, 203, 207)',
-  '#00ff00',
-  '#ff00ff',
-  '#00ffff',
-  '#ffa500'
-]
-
 @Component({
   selector: 'app-survey-details',
   templateUrl: './survey-details.component.html',
@@ -47,10 +31,7 @@ const colors = [
 })
 export class SurveyDetailsComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('canvas') canvasRef: ElementRef;
   surveyId: string;
-  ctx;
-  chart;
   questionData: SurveyQuestion;
   isLoading = true;
   selectedChartType: ChartTypes;
@@ -77,7 +58,7 @@ export class SurveyDetailsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     if (this.questionData){
-      this.initChart();
+      this.initChartConfigSelects();
     }
     this.initActionbar();
   }
@@ -99,59 +80,20 @@ export class SurveyDetailsComponent implements OnInit, AfterViewInit {
     );
   }
 
-  initChart(): void{
+  initChartConfigSelects(): void{
     const chartType = this.questionData.customChartSettings ? this.questionData.customChartSettings.type : this.questionData.charts[0].type;
     if (chartType && ChartTypes[chartType]) {
       this.selectedChartType = ChartTypes[chartType];
-      this.generateChartData();
     } else {
       this.chartInvalidError = true;
     }
   }
 
-  generateChartData(): void {
-    let chartLabels: string[] = [];
-    let datasetFrequecy: number[] = [];
-    this.questionData.choices.forEach(choice => {
-      chartLabels.push(choice.title);
-      datasetFrequecy.push(choice.frequency)
-    })
-
-    this.isLoading = false;
-    this.ctx = this.canvasRef.nativeElement.getContext('2d');
-    this.chart = new Chart(this.ctx, {
-      type: this.selectedChartType as keyof ChartTypeRegistry,
-      data: {
-        labels: chartLabels,
-        datasets: [
-          {
-            data: datasetFrequecy,
-            fill: colors,
-            backgroundColor: colors,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            title:{
-              text: this.questionData.title
-            }
-          }
-        }
-      }
-    });
-    this.isLoading = false;
-  }
-
   reloadChart(event):void{
     if (event !== this.selectedChartType){
       this.selectedChartType = event;
-      this.chart.destroy();
-      this.isLoading = true;
-      this.generateChartData();
+      const updatedCustomChartSettings = {...this.questionData.customChartSettings, type: event};
+      this.questionData = { ...this.questionData, customChartSettings: updatedCustomChartSettings};
     }
   }
 

@@ -28,9 +28,7 @@
           </nz-select>
         </nz-input-group>
       </div>
-      <div class="chart-container">
-        <canvas #canvas class="max-h-[300px]" >{{chart}}</canvas>
-      </div>
+      <app-view-chart [setQuestionData]="questionData"></app-view-chart>
     </div>
   </div>
 
