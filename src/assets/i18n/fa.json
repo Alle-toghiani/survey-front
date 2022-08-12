@@ -6,6 +6,7 @@
     }
   },
   "reports-list": {
+    "view-preview": "مشاهده پیش نمایش",
     "widget-title": "لیست سوالات",
     "table": {
       "title": "عنوان سوال",
