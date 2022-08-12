@@ -6,10 +6,9 @@ import { TranslateService} from "@ngx-translate/core";
 
 import { ActionbarModel, ActionItem } from "@shared-components/src/app/main-layout/models/actionbar.model";
 import { ManageReportsHttpService } from "../../services/manage-reports-http.service";
-import { MainLayoutService } from "../../../services/main-layout.service";
-import { SurveyQuestion } from "../../../models/survey.model";
-import { SharedModel } from "../../../models/shared.model";
-import { RoutesEnum } from "../../../enums/routes.enum";
+import { MainLayoutService } from "@services";
+import { SurveyQuestion, SharedModel } from "@models";
+import { RoutesEnum } from "@enums";
 
 const ChartTypes = {
   1: "bar",
