@@ -22,7 +22,10 @@
       "dom"
     ],
     "paths": {
-      "@shared-components/*": ["../shared-components/*"]
+      "@shared-components/*": ["../shared-components/*"],
+      "@models": ["./app/models/index.ts"],
+      "@services": ["./app/services/index.ts"],
+      "@enums": ["./app/enums/index.ts"],
     }
   },
   "angularCompilerOptions": {
