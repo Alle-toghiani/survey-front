@@ -1,1 +1,5 @@
-<p>results-container works!</p>
+<div class="results-container">
+  <div class="item-container" *ngFor="let item of survey.data">
+    <app-result-item [data]="item"></app-result-item>
+  </div>
+</div>
