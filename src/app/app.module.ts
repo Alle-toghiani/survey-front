@@ -11,7 +11,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
-import { ResponseNotificationInterceptor } from "./services/http-interceptors/response-notification.interceptor";
+import { ResponseNotificationInterceptor } from "@services";
 
 
 export function createTranslateLoader(http: HttpClient) {
