@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: ':' + RoutesEnum.SURVEY_ID_PARAM + '/preview',
-    loadChildren: () => import('../features/results/results.module').then(r => r.ResultsModule),
+    loadChildren: () => import('../results/results.module').then(r => r.ResultsModule),
     resolve: { surveyResolverData: SurveyResolver}
   }
 ];
