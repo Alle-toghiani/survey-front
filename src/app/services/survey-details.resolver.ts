@@ -15,7 +15,7 @@ import { CustomValidatorsService } from "./custom-validators.service";
 @Injectable({
   providedIn: 'root'
 })
-export class SurveyResolver implements Resolve<SharedModel<SurveyModel | SurveyQuestion>> {
+export class SurveyDetailsResolver implements Resolve<SharedModel<SurveyModel | SurveyQuestion>> {
   constructor(
     private surveyHttpService: ManageReportsHttpService,
     private validatorService: CustomValidatorsService,
