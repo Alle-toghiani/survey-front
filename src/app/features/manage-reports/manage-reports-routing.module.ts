@@ -7,6 +7,11 @@ import { ReportsListComponent } from "./components/reports-list/reports-list.com
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/' + RoutesEnum.DASHBOARD
+  },
+  {
     path: ':' + RoutesEnum.SURVEY_ID_PARAM,
     component: ReportsListComponent,
     resolve: { surveyResolverData: SurveyResolver}
