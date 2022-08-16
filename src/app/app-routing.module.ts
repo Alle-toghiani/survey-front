@@ -5,8 +5,8 @@ import { RoutesEnum} from "@enums";
 import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
 
 const routes: Routes = [
-  {path: '', redirectTo:RoutesEnum.SURVEYS, pathMatch: 'full'},
-  {path: RoutesEnum.DASHBOARD, redirectTo: RoutesEnum.SURVEYS, },
+  {path: '', redirectTo: RoutesEnum.DASHBOARD, pathMatch: 'full'},
+  {path: RoutesEnum.DASHBOARD, loadChildren: ()=> import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)},
   {path: RoutesEnum.SURVEYS, loadChildren:() => import('./features/manage-reports/manage-reports.module').then(m => m.ManageReportsModule)},
   {path: RoutesEnum.NOT_FOUND_PAGE, loadComponent: () => import('./common/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent)},
   {path: '**', redirectTo: RoutesEnum.NOT_FOUND_PAGE}
