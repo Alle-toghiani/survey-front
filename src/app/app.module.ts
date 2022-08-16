@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule, TranslateService} from "@ngx-translat
 import { TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { AngularSvgIconModule} from "angular-svg-icon";
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ export function translateFactory(translate: TranslateService) {
       MainLayoutModule,
       HttpClientModule,
       NzNotificationModule,
+      NzButtonModule,
       AngularSvgIconModule.forRoot(),
       TranslateModule.forRoot({
         defaultLanguage: 'fa',
