@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from "@angular/common/http";
-import { Observable, from} from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
-import { environment} from "../../../../environments/environment";
-import { SharedModel} from "../../../models/shared.model";
-import { SurveyModel, SurveyQuestion, CustomChartSettings} from "../../../models/survey.model";
+import { environment } from "../../../../environments/environment";
+import { SurveyModel, SurveyQuestion, CustomChartSettings, SharedModel } from "@models";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ManageReportsHttpService {
 
   constructor(private http: HttpClient) { }
