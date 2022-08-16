@@ -7,7 +7,7 @@ import {
 
 import { EMPTY, Observable } from 'rxjs';
 
-import { RoutesEnum } from "../enums/routes.enum";
+import { RoutesEnum } from "@enums";
 import { SharedModel, SurveyModel, SurveyQuestion } from "@models";
 import { ManageReportsHttpService } from "../features/manage-reports/services/manage-reports-http.service";
 import { CustomValidatorsService } from "./custom-validators.service";
