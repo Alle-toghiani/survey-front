@@ -64,7 +64,9 @@
     "password": "کلمه عبور",
     "forgot-password": "فراموشی رمز عبور",
     "login": "ورود",
+    "login-with-account": "ورود با حساب کاربری",
     "create-account": "ایجاد حساب کاربری",
+    "submit-account": "ثبت حساب",
     "remember-me": "مرا به خاطر بسپار"
   }
 }
