@@ -1,21 +1,19 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { RoutesEnum} from "@enums";
-import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
+import {RoutesEnum} from "@enums";
 
 const routes: Routes = [
   {path: '', redirectTo: RoutesEnum.DASHBOARD, pathMatch: 'full'},
   {path: RoutesEnum.DASHBOARD, loadChildren: ()=> import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)},
-  {path: RoutesEnum.SURVEYS, loadChildren:() => import('./features/manage-reports/manage-reports.module').then(m => m.ManageReportsModule)},
+  {path: RoutesEnum.AUTH, loadChildren: ()=> import('./features/auth/auth.module').then(m => m.AuthModule)},
   {path: RoutesEnum.NOT_FOUND_PAGE, loadComponent: () => import('./common/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent)},
   {path: '**', redirectTo: RoutesEnum.NOT_FOUND_PAGE}
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
-    MainLayoutModule
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })
