@@ -1,0 +1,83 @@
+[
+  {
+    "id": 174412,
+    "order": 0,
+    "name": "پرسشنامه‌های من",
+    "surveys": [
+      {
+        "id": 473009,
+        "name": "test",
+        "folder_id": 174412,
+        "language": 2,
+        "created_date": "2022-04-30T13:08:02.980727+04:30",
+        "active": false,
+        "can_active": true,
+        "is_stopped": false,
+        "views": 3,
+        "submitted_responses": 3,
+        "preview_code": "M0km5TOH",
+        "report_code": "8v8hrmT",
+        "url_slug": null,
+        "is_template": false,
+        "question_count": 3,
+        "theme": {
+          "id": 1,
+          "order": 0,
+          "background_color": "#F1F1F1",
+          "question_color": "#333",
+          "answer_color": "#333",
+          "button_color": "#118EB7",
+          "accent_color": "#118EB7",
+          "font_family": 1,
+          "font_size": 13,
+          "background_image_config": null,
+          "background_image": null,
+          "background_image_repeat": 3,
+          "background_image_brightness": 100,
+          "background_image_fit": 2,
+          "background_image_position": 5,
+          "background_image_size_percentage": 100,
+          "is_public": true,
+          "thumbnail_url": null
+        }
+      },
+      {
+        "id": 474423,
+        "name": "test2",
+        "folder_id": 174412,
+        "language": 2,
+        "created_date": "2022-05-03T11:48:04.229759+04:30",
+        "active": true,
+        "can_active": true,
+        "is_stopped": false,
+        "views": 4,
+        "submitted_responses": 3,
+        "preview_code": "fkVdEtUg",
+        "report_code": "1lyytA5",
+        "url_slug": null,
+        "is_template": false,
+        "question_count": 3,
+        "theme": {
+          "id": 1,
+          "order": 0,
+          "background_color": "#F1F1F1",
+          "question_color": "#333",
+          "answer_color": "#333",
+          "button_color": "#118EB7",
+          "accent_color": "#118EB7",
+          "font_family": 1,
+          "font_size": 13,
+          "background_image_config": null,
+          "background_image": null,
+          "background_image_repeat": 3,
+          "background_image_brightness": 100,
+          "background_image_fit": 2,
+          "background_image_position": 5,
+          "background_image_size_percentage": 100,
+          "is_public": true,
+          "thumbnail_url": null
+        }
+      }
+    ]
+  }
+]
