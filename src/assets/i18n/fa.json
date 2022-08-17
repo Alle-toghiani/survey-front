@@ -1,5 +1,6 @@
 {
   "common": {
+    "operation": "عملیات",
     "operations": {
       "delete": "حذف",
       "details": "جزئیات"
@@ -15,6 +16,15 @@
       "description": "توضیحات",
       "visibility":"نمایش",
       "operation": "عملیات"
+    }
+  },
+  "dashboard": {
+    "folders-list": "لیست پوشه ها",
+    "table": {
+      "survey-title": "عنوان پرسشنامه",
+      "view-count": "تعداد بازدید",
+      "answer-count": "تعداد پاسخ ها",
+      "question-count": "تعداد سوال"
     }
   },
   "survey-details": {
