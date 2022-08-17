@@ -32,7 +32,7 @@ export class SurveyDetailsResolver implements Resolve<SharedModel<SurveyModel | 
       return this.surveyHttpService.getSurvey(sid);
       //TODO handle error
     } else {
-      this.router.navigate(['/'+RoutesEnum.NOT_FOUND_PAGE])
+      this.router.navigate(['/' + RoutesEnum.DASHBOARD, RoutesEnum.NOT_FOUND_PAGE])
       return EMPTY;
     }
   }
