@@ -26,6 +26,7 @@
       "@models": ["./app/models/index.ts"],
       "@services": ["./app/services/index.ts"],
       "@enums": ["./app/enums/index.ts"],
+      "@environments/*": ["./environments/*"]
     }
   },
   "angularCompilerOptions": {
