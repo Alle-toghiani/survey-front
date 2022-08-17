@@ -57,5 +57,14 @@
       "radar": "رادار"
     },
     "chart-type-label": "نوع نمودار"
+  },
+
+  "auth": {
+    "username": "نام کاربری",
+    "password": "کلمه عبور",
+    "forgot-password": "فراموشی رمز عبور",
+    "login": "ورود",
+    "create-account": "ایجاد حساب کاربری",
+    "remember-me": "مرا به خاطر بسپار"
   }
 }
