@@ -1,38 +1,43 @@
-<nz-collapse>
-  <nz-collapse-panel
-    *ngFor="let folder of folderData"
-    [nzHeader]="folder.name"
-    [nzActive]="folder.active"
-    [nzDisabled]="folder.surveys.length === 0"
-  >
-    <app-table [listOfData]="folder.surveys"
-               [headers]="[
+<div class="main-container w-full">
+  <app-widget-container [title]="'dashboard.folders-list' | translate" class="min-h-[300px]">
+    <nz-collapse>
+      <nz-collapse-panel
+        *ngFor="let folder of folders"
+        [nzHeader]="folder.name"
+        [nzActive]="folder.active"
+        [nzDisabled]="folder.surveys.length === 0"
+      >
+        <app-table [listOfData]="folder.surveys"
+                   [headers]="[
                'dashboard.table.survey-title'|translate,
                'dashboard.table.question-count'|translate,
                'dashboard.table.answer-count'|translate,
                'dashboard.table.view-count'|translate,
                'common.operation'|translate,
                ]"
-               [tableCells]="[td_1,td_2,td_3,td_4,td_6]"
-    ></app-table>
+                   [tableCells]="[td_1,td_2,td_3,td_4,td_6]"
+        ></app-table>
 
-    <ng-template #td_1 let-data="data">
-      <div>{{data.name}}</div>
-    </ng-template>
-    <ng-template #td_2 let-data="data">
-      <div>{{data.question_count}}</div>
-    </ng-template>
-    <ng-template #td_3 let-data="data">
-      <div>{{data.submitted_responses}}</div>
-    </ng-template>
-    <ng-template #td_4 let-data="data">
-      <div>{{data.views}}</div>
-    </ng-template>
-    <ng-template #td_6 let-data="data">
-      <div class="flex gap-10px justify-center">
-<!--        <button nz-button nzType="default" nzDanger >{{"common.operations.delete"|translate}}</button>-->
-        <button nz-button nzType="primary" [routerLink]="['/surveys', data.id]">{{"common.operations.details"|translate}}</button>
-      </div>
-    </ng-template>
-  </nz-collapse-panel>
-</nz-collapse>
+        <ng-template #td_1 let-data="data">
+          <div>{{data.name}}</div>
+        </ng-template>
+        <ng-template #td_2 let-data="data">
+          <div>{{data.question_count}}</div>
+        </ng-template>
+        <ng-template #td_3 let-data="data">
+          <div>{{data.submitted_responses}}</div>
+        </ng-template>
+        <ng-template #td_4 let-data="data">
+          <div>{{data.views}}</div>
+        </ng-template>
+        <ng-template #td_6 let-data="data">
+          <div class="flex gap-10px justify-center">
+            <!--        <button nz-button nzType="default" nzDanger >{{"common.operations.delete"|translate}}</button>-->
+            <button nz-button nzType="primary" [routerLink]="['surveys', data.id]">{{"common.operations.details"|translate}}</button>
+          </div>
+        </ng-template>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </app-widget-container>
+</div>
+
