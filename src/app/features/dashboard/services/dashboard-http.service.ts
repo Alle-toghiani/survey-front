@@ -3,8 +3,8 @@ import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 
-import { SharedModel } from "@models";
-import { environment} from "../../../../environments/environment";
+import { FolderModel, SharedModel} from "@models";
+import { environment } from "@environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,12 @@ export class DashboardHttpService {
     private http: HttpClient
   ) { }
 
-  getFoldersAndSurveys(): Observable<SharedModel<any>> {
-    return this.http.get<SharedModel<any>>(environment.backendBaseUrl + 'folders');
+  getFoldersAndSurveys(): Observable<SharedModel<FolderModel[]>> {
+    return this.http.get<SharedModel<FolderModel[]>>(environment.backendBaseUrl + 'folders');
+  }
+
+  getMockFolders(): Observable<FolderModel[]>{
+    const mockUrl = 'assets/mock-jsons/mock-folders.json';
+    return this.http.get<FolderModel[]>(mockUrl);
   }
 }
