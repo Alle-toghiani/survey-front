@@ -16,7 +16,7 @@ export class DashboardHttpService {
   ) { }
 
   getFoldersAndSurveys(): Observable<SharedModel<FolderModel[]>> {
-    return this.http.get<SharedModel<FolderModel[]>>(environment.backendBaseUrl + 'folders');
+    return this.http.get<SharedModel<FolderModel[]>>(environment.backendBaseUrl + 'survey/folders');
   }
 
   getMockFolders(): Observable<FolderModel[]>{

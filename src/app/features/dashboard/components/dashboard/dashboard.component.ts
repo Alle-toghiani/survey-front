@@ -28,13 +28,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getFoldersData(): void {
     this.subscriptions.add(
-      this.dashboardService.getMockFolders().subscribe({
+      this.dashboardService.getFoldersAndSurveys().subscribe({
         next: (response) => {
-          console.log(response)
-          this.folders = response;
-          // if (response.success){
-          //   this.folders = response.data;
-          // }
+          if (response.success){
+            this.folders = response.data;
+          }
         }
       })
     )
