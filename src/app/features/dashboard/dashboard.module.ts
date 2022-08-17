@@ -10,6 +10,7 @@ import { WidgetContainerModule } from "@shared-components/src/app/widget-contain
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FoldersSurveysListComponent } from './components/folders-surveys-list/folders-surveys-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     TranslateModule,
     NzCollapseModule,
     NzButtonModule,
-    TablesModule
+    TablesModule,
+    MainLayoutModule
   ]
 })
 export class DashboardModule { }
