@@ -41,7 +41,7 @@ export class ReportsListComponent implements OnInit, AfterViewInit {
           title: this.translator('reports-list.view-preview'),
           iconType: 'group',
           color: 'orange',
-          link: ['/' + RoutesEnum.DASHBOARD + RoutesEnum.SURVEYS + '/' + this.surveyId + '/' + RoutesEnum.SURVEY_PREVIEW]
+          link: ['/' + RoutesEnum.DASHBOARD, RoutesEnum.SURVEYS, this.surveyId, RoutesEnum.SURVEY_PREVIEW]
         }]
       }
     )
