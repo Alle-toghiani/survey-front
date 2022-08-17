@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
+import {FolderModel} from "@models";
 
 @Component({
   selector: 'app-folders-surveys-list',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoldersSurveysListComponent implements OnInit {
 
+  @Input('data') folderData: FolderModel[];
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
 }
