@@ -62,6 +62,9 @@
   "auth": {
     "username": "نام کاربری",
     "password": "کلمه عبور",
+    "password-min-length": "حداقل 8 کاراکتر",
+    "email": "ایمیل",
+    "confirm-password": "تکرار کلمه عبور",
     "forgot-password": "فراموشی رمز عبور",
     "login": "ورود",
     "login-with-account": "ورود با حساب کاربری",
