@@ -52,6 +52,9 @@ export class SignupComponent implements OnInit, OnDestroy {
             if (signupRes.success){
               this.router.navigate(['/'+RoutesEnum.AUTH, RoutesEnum.LOGIN])
             }
+          },
+          error: err => {
+            this.isLoadingSubmitBtn = false;
           }
         }
       )
