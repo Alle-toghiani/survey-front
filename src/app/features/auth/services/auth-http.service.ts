@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 import { SharedModel } from "@models";
 import { environment } from "@environments/environment";
-import {SignupReqModel} from "../models/signup-req.model";
+import {SignInReqModel, SignupReqModel} from "../models/auth-shared.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthHttpService {
     return this.http.post<SharedModel<any>>(url, data);
   }
 
-  signIn(data: any): Observable<SharedModel<any>>{
+  signIn(data: SignInReqModel): Observable<SharedModel<any>>{
     const url = environment.backendBaseUrl + 'auth/signin';
     return this.http.post<SharedModel<any>>(url, data);
   }

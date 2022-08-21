@@ -6,6 +6,7 @@ import {Subscription} from "rxjs";
 
 import {RoutesEnum} from "@enums";
 import {AuthHttpService} from "../../services/auth-http.service";
+import {SignInReqModel} from "../../models/auth-shared.model";
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     this.isLoadingSubmitBtn = true;
-    const loginData = {
+    const loginData: SignInReqModel = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }

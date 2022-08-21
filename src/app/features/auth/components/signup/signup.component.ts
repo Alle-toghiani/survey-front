@@ -6,7 +6,7 @@ import {Subscription} from "rxjs";
 
 import {RoutesEnum} from "@enums";
 import {AuthHttpService} from "../../services/auth-http.service";
-import {SignupReqModel} from "../../models/signup-req.model";
+import {SignupReqModel} from "../../models/auth-shared.model";
 
 @Component({
   selector: 'app-signup',
