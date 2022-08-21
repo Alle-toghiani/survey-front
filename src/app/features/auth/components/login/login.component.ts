@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from "@angular/forms";
-import {Subscription} from "rxjs";
-import {AuthHttpService} from "../../services/auth-http.service";
 import {Router} from "@angular/router";
+
+import {Subscription} from "rxjs";
+
 import {RoutesEnum} from "@enums";
+import {AuthHttpService} from "../../services/auth-http.service";
 
 @Component({
   selector: 'app-login',
