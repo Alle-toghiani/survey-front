@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 
+import { JwtModule} from "@auth0/angular-jwt";
 import { TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import { TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { AngularSvgIconModule} from "angular-svg-icon";
@@ -12,7 +13,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
-import { ResponseNotificationInterceptor } from "@services";
+import {RequestSetTokenInterceptor, ResponseNotificationInterceptor} from "@services";
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -43,6 +44,7 @@ export function translateFactory(translate: TranslateService) {
       HttpClientModule,
       NzNotificationModule,
       NzButtonModule,
+      JwtModule,
       AngularSvgIconModule.forRoot(),
       TranslateModule.forRoot({
         defaultLanguage: 'fa',
@@ -63,6 +65,11 @@ export function translateFactory(translate: TranslateService) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseNotificationInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestSetTokenInterceptor,
       multi: true
     }
   ],
