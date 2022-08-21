@@ -20,4 +20,9 @@ export class AuthHttpService {
     const url = environment.backendBaseUrl + 'auth/signup';
     return this.http.post<SharedModel<any>>(url, data);
   }
+
+  signIn(data: any): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'auth/signin';
+    return this.http.post<SharedModel<any>>(url, data);
+  }
 }
