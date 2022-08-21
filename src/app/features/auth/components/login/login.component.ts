@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 
 import {RoutesEnum} from "@enums";
+import {TokenService} from "@services";
 import {AuthHttpService} from "../../services/auth-http.service";
 import {SignInReqModel} from "../../models/auth-shared.model";
 
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthHttpService,
-    private router: Router
+    private router: Router,
+    private tokenSerice: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
           next: loginRes => {
             this.isLoadingSubmitBtn = false;
             if(loginRes.success){
+              this.tokenSerice.setToken(loginRes.data.access_token);
               this.router.navigate([RoutesEnum.DASHBOARD]);
             }
           },
