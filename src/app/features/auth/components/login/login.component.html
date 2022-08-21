@@ -1,6 +1,6 @@
 <div class="outer-container flex justify-center items-center h-[80vh]">
   <div class="inner-container bg-white rounded-xl p-[30px] w-[340px] flex h-fit">
-    <form nz-form [formGroup]="validateForm" class="login-form w-full" (ngSubmit)="submitForm()">
+    <form nz-form [formGroup]="loginForm" class="login-form w-full" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
           <nz-input-group nzPrefixIcon="user">
@@ -25,7 +25,10 @@
           <a class="login-form-forgot">{{ 'auth.forgot-password'|translate }}</a>
         </div>
       </div>
-      <button nz-button class="w-full justify-center mb-10px" [nzType]="'primary'">{{'auth.login' | translate}}</button>
+      <button nz-button
+              [disabled]="loginForm.valid"
+              class="w-full justify-center mb-10px"
+              [nzType]="'primary'">{{'auth.login' | translate}}</button>
       <a [routerLink]="['../signup']">{{ 'auth.create-account'|translate }}</a>
     </form>
 
