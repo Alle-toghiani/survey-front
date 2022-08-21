@@ -3,3 +3,5 @@ export interface SignupReqModel {
   email: string;
   password: string;
 }
+
+export type SignInReqModel = Omit<SignupReqModel, 'email'>
