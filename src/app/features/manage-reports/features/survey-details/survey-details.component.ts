@@ -32,6 +32,7 @@ export class SurveyDetailsComponent implements OnInit, AfterViewInit {
 
   surveyId: string;
   questionData: SurveyQuestion;
+  chartData: SurveyQuestion;
   isLoading = true;
   selectedChartType: ChartTypes;
   chartInvalidError = false;
@@ -49,6 +50,8 @@ export class SurveyDetailsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.surveyId = this.route.snapshot.params[RoutesEnum.SURVEY_ID_PARAM];
     this.questionData = (this.route.snapshot.data['surveyResolverData'] as SharedModel<SurveyQuestion>).data;
+    this.chartData = this.questionData;
+
 
     this.layoutService.actionbarClickEvent.subscribe(item => {
       this.onActionbarClicked(item);
@@ -92,7 +95,7 @@ export class SurveyDetailsComponent implements OnInit, AfterViewInit {
     if (event !== this.selectedChartType){
       this.selectedChartType = event;
       const updatedCustomChartSettings = {...this.questionData.customChartSettings, type: event};
-      this.questionData = { ...this.questionData, customChartSettings: updatedCustomChartSettings};
+      this.chartData = { ...this.questionData, customChartSettings: updatedCustomChartSettings};
     }
   }
 
