@@ -8,6 +8,8 @@ export enum RoutesEnum {
   LOGIN = 'login',
   SIGNUP = 'signup',
 
+  API_TOKEN = 'api-token',
+
   NOT_FOUND_PAGE = 'not-found',
   DASHBOARD = 'dashboard'
 }
