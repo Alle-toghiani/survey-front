@@ -19,6 +19,10 @@ const routes: Routes = [
         path: RoutesEnum.NOT_FOUND_PAGE,
         loadComponent: () => import('../../common/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent)
       },
+      {
+        path: RoutesEnum.API_TOKEN,
+        loadComponent: () => import('./components/api-token-page/api-token-page.component').then((m)=> m.ApiTokenPageComponent)
+      }
     ]
   },
 ];
