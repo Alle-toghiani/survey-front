@@ -1,0 +1,33 @@
+<div class="main-container w-full">
+  <app-widget-container [title]="'api-token.widget-title' | translate" class="min-h-[300px]">
+    <h3>
+      {{'api-token.status'|translate}}:
+      <span class="px-5px"
+            [ngClass]="{'text-green': isApiTokenValid, 'text-error': !isApiTokenValid}">
+      {{(isApiTokenValid ? 'api-token.valid' : 'api-token.invalid')|translate}}
+    </span>
+    </h3>
+
+    <form nz-form [formGroup]="apiTokenForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="apiToken">{{'api-token.new-token'|translate}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="'api-token.token-length-error'|translate">
+          <div class="flex">
+            <input nz-input
+                   formControlName="apiToken"
+                   id="apiToken"
+                   size="43"/>
+            <button nz-button nzType="primary"
+                    [nzLoading]="isLoadingSubmitBtn"
+                    [disabled]="!apiTokenForm.valid"
+                    class="mx-10px"
+                    type="submit">
+              {{'common.submit'|translate}}
+            </button>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+  </app-widget-container>
+</div>
