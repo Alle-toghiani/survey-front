@@ -30,7 +30,6 @@ export class TokenService {
     if (token){
       try {
         const decodedToken = this.jwtService.decodeToken(token);
-        console.log(decodedToken);
         if (decodedToken.username){
           localStorage.setItem(LocalStorageKeys.CLIENT_TOKEN, token);
           return true;
@@ -55,6 +54,11 @@ export class TokenService {
       this.onNavigateToLogin();
     }
     return undefined;
+  }
+
+  isApiTokenValid(): boolean {
+    const token = this.getToken();
+    return this.jwtService.decodeToken(token).hasToken;
   }
 
   onTokenExpired(): void{
