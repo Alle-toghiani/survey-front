@@ -23,4 +23,9 @@ export class DashboardHttpService {
     const mockUrl = 'assets/mock-jsons/mock-folders.json';
     return this.http.get<FolderModel[]>(mockUrl);
   }
+
+  setApiToken(apiToken: string): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'users/api-token';
+    return this.http.post<SharedModel<any>>(url, {apiToken});
+  }
 }
