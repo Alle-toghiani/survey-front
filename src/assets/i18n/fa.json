@@ -4,7 +4,8 @@
     "operations": {
       "delete": "حذف",
       "details": "جزئیات"
-    }
+    },
+    "submit": "ثبت"
   },
   "reports-list": {
     "view-preview": "مشاهده پیش نمایش",
@@ -73,5 +74,14 @@
     "remember-me": "مرا به خاطر بسپار",
     "token-expired": "توکن شما منقضی شده است",
     "please-relogin": "لطفا مجددا وارد شوید"
+  },
+
+  "api-token": {
+    "widget-title": "تنظیمات کلید API",
+    "status": "وضعیت کلید API شما",
+    "valid": "معتبر",
+    "invalid": "نامتعبر",
+    "new-token": "توکن جدید",
+    "token-length-error": "حداقل 40 و حداکثر 48 کاراکتر"
   }
 }
