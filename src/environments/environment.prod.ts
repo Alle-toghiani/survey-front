@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: false,
+
+  porslineBaseApi : 'https://survey.porsline.ir/api/',
+  backendBaseUrl: 'http://localhost:4500/'
 };
