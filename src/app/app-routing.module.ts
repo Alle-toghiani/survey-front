@@ -3,8 +3,14 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {RoutesEnum} from "@enums";
 import {AuthGuard} from "./guards/auth.guard";
+import {SurveyDetailsResolver} from "@services";
 
 const routes: Routes = [
+  {
+    path: 'r/:'+RoutesEnum.REPORT_PARAM,
+    loadChildren: () => import('./features/results/results.module').then(m => m.ResultsModule),
+    resolve: { surveyResolverData: SurveyDetailsResolver}
+  },
   {
     path: '',
     redirectTo: RoutesEnum.DASHBOARD,
