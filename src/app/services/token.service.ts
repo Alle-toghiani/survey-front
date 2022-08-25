@@ -56,6 +56,11 @@ export class TokenService {
     return undefined;
   }
 
+  isUserAdmin(): boolean{
+    const token = this.getToken();
+    return !(this.jwtService.decodeToken(token).parentId);
+  }
+
   isApiTokenValid(): boolean {
     const token = this.getToken();
     return this.jwtService.decodeToken(token).hasToken;
