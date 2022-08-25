@@ -9,15 +9,15 @@ import { EMPTY, Observable } from 'rxjs';
 
 import { RoutesEnum } from "@enums";
 import { SharedModel, SurveyModel, SurveyQuestion } from "@models";
-import { ManageReportsHttpService } from "../features/manage-reports/services/manage-reports-http.service";
 import { CustomValidatorsService } from "./custom-validators.service";
+import { SurveyHttpService } from "./survey-http.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurveyDetailsResolver implements Resolve<SharedModel<SurveyModel | SurveyQuestion>> {
   constructor(
-    private surveyHttpService: ManageReportsHttpService,
+    private surveyHttpService: SurveyHttpService,
     private validatorService: CustomValidatorsService,
     private router: Router
   ) {
