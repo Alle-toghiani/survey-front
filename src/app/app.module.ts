@@ -10,10 +10,10 @@ import { AngularSvgIconModule} from "angular-svg-icon";
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
+import {RequestSetTokenInterceptor, ResponseNotificationInterceptor} from "@services";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
-import {RequestSetTokenInterceptor, ResponseNotificationInterceptor} from "@services";
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -40,7 +40,6 @@ export function translateFactory(translate: TranslateService) {
       BrowserModule,
       BrowserAnimationsModule,
       AppRoutingModule,
-      MainLayoutModule,
       HttpClientModule,
       NzNotificationModule,
       NzButtonModule,
