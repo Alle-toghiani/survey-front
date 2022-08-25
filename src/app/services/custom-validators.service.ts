@@ -17,6 +17,10 @@ export class CustomValidatorsService {
     return id && id.length === 8 && this.isNumeric(id);
   }
 
+  isReportCodeValid(id: string): boolean{
+    return id && id.length === 7;
+  }
+
   isNumeric(str: string) {
     return !isNaN(+str)
   }
