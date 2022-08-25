@@ -5,7 +5,8 @@
       "delete": "حذف",
       "details": "جزئیات"
     },
-    "submit": "ثبت"
+    "submit": "ثبت",
+    "back": "بازگشت"
   },
   "reports-list": {
     "view-preview": "مشاهده پیش نمایش",
@@ -26,7 +27,9 @@
       "view-count": "تعداد بازدید",
       "answer-count": "تعداد پاسخ ها",
       "question-count": "تعداد سوال"
-    }
+    },
+    "actionbar.manage-mods": "مدیریت ادمین ها",
+    "actionbar.manage-apiKey": "مدیریتی کلید API"
   },
   "survey-details": {
     "save-changes": "ذخیره تغییرات",
@@ -83,5 +86,9 @@
     "invalid": "نامتعبر",
     "new-token": "توکن جدید",
     "token-length-error": "حداقل 40 و حداکثر 48 کاراکتر"
+  },
+
+  "results": {
+    "actionbar.users-login": "ورود کاربران"
   }
 }
