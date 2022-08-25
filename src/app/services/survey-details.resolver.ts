@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
-import { EMPTY, Observable } from 'rxjs';
+import {EMPTY, map, Observable} from 'rxjs';
 
 import { RoutesEnum } from "@enums";
 import { SharedModel, SurveyModel, SurveyQuestion } from "@models";
@@ -25,12 +25,18 @@ export class SurveyDetailsResolver implements Resolve<SharedModel<SurveyModel | 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<SharedModel<SurveyModel | SurveyQuestion>> | Promise<SharedModel<SurveyModel | SurveyQuestion>> | SharedModel<SurveyModel | SurveyQuestion>{
     const sid = route.params[RoutesEnum.SURVEY_ID_PARAM];
     const qid = route.params[RoutesEnum.QUESTION_ID_PARAM];
-    if ( this.validatorService.isSurveyIdValid(sid)) {
-      if (this.validatorService.isQuestionIdValid(qid)){
-        return this.surveyHttpService.getSurveyQuestionDetails(sid, qid);
-      }
-      return this.surveyHttpService.getSurvey(sid);
-      //TODO handle error
+    const reportCode = route.params[RoutesEnum.REPORT_PARAM];
+    if ( reportCode && this.validatorService.isReportCodeValid(reportCode)){
+      return this.surveyHttpService.getSurveyReportData(reportCode).pipe(map(
+        item => ({...item, data: {data: Object.values(item.data['questions'])} as SurveyModel})
+      ))
+    }
+    else if ( sid && this.validatorService.isSurveyIdValid(sid)) {
+    if (this.validatorService.isQuestionIdValid(qid)){
+      return this.surveyHttpService.getSurveyQuestionDetails(sid, qid);
+    }
+    return this.surveyHttpService.getSurvey(sid);
+    //TODO handle error
     } else {
       this.router.navigate(['/' + RoutesEnum.DASHBOARD, RoutesEnum.NOT_FOUND_PAGE])
       return EMPTY;
