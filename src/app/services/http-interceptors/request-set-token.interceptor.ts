@@ -9,6 +9,13 @@ import {
 import { Observable } from 'rxjs';
 
 import {TokenService} from "@services";
+import {RoutesEnum} from "@enums";
+
+const WhiteList = [
+  'assets',
+  RoutesEnum.AUTH+'/'+RoutesEnum.LOGIN,
+  RoutesEnum.AUTH+'/'+RoutesEnum.SIGNUP,
+]
 
 @Injectable()
 export class RequestSetTokenInterceptor implements HttpInterceptor {
@@ -19,7 +26,7 @@ export class RequestSetTokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (!(request instanceof HttpResponse)){
-      if (!request.url.includes('assets')) {
+      if (!WhiteList.some( whiteListUrl => request.url.includes(whiteListUrl))) {
         const token = this.tokenService.getToken();
         request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
       }
