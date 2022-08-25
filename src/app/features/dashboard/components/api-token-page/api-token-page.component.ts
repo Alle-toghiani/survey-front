@@ -63,7 +63,8 @@ export class ApiTokenPageComponent implements OnInit {
           next: setTokenRes => {
             this.isLoadingSubmitBtn = false;
             if ( setTokenRes.success){
-              console.log('success');
+              this.tokenService.setToken(setTokenRes.data.access_token);
+              this.getApiTokenStatus();
             }
           },
           error: err => {
