@@ -3,7 +3,7 @@
     <h3>
       {{'api-token.status'|translate}}:
       <span class="px-5px"
-            [ngClass]="{'text-green': isApiTokenValid, 'text-error': !isApiTokenValid}">
+            [ngClass]="{'text-success': isApiTokenValid, 'text-error': !isApiTokenValid}">
       {{(isApiTokenValid ? 'api-token.valid' : 'api-token.invalid')|translate}}
     </span>
     </h3>
