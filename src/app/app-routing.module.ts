@@ -4,10 +4,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {RoutesEnum} from "@enums";
 import {AuthGuard} from "./guards/auth.guard";
 import {SurveyDetailsResolver} from "@services";
+import {MainLayoutComponent} from "@shared-components/src/app/main-layout/main-layout.component";
+import {MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
 
 const routes: Routes = [
   {
     path: 'r/:'+RoutesEnum.REPORT_PARAM,
+    component: MainLayoutComponent,
     loadChildren: () => import('./features/results/results.module').then(m => m.ResultsModule),
     resolve: { surveyResolverData: SurveyDetailsResolver}
   },
@@ -38,7 +41,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MainLayoutModule
   ],
   exports: [RouterModule]
 })
