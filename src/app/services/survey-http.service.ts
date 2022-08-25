@@ -15,9 +15,9 @@ export class SurveyHttpService {
     private http: HttpClient
   ) { }
 
-  getSurveyReportData(reportId: string):Observable<any>{
+  getSurveyReportData(reportId: string): Observable<SharedModel<SurveyModel>>{
     const url = environment.backendBaseUrl + 'survey/r/' + reportId;
-    return this.http.get(url);
+    return this.http.get<SharedModel<SurveyModel>>(url);
   }
 
   getSurvey(surveyId: number): Observable<SharedModel<SurveyModel>>{
