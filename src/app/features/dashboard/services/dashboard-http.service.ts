@@ -25,7 +25,7 @@ export class DashboardHttpService {
   }
 
   setApiToken(apiToken: string): Observable<SharedModel<any>>{
-    const url = environment.backendBaseUrl + 'users/api-token';
+    const url = environment.backendBaseUrl + 'auth/api-token';
     return this.http.post<SharedModel<any>>(url, {apiToken});
   }
 }
