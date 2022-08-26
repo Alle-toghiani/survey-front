@@ -60,7 +60,8 @@
       "polarArea": "قطبی",
       "radar": "رادار"
     },
-    "chart-type-label": "نوع نمودار"
+    "chart-type-label": "نوع نمودار",
+    "export-chart": "خروجی از نمودار"
   },
 
   "auth": {
