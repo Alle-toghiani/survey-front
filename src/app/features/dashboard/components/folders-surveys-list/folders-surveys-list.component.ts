@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import { Subscription } from "rxjs";
+import { ClipboardService } from 'ngx-clipboard'
 
 import { FolderModel } from "@models";
 import { DashboardHttpService } from "../../services/dashboard-http.service";
@@ -15,10 +16,12 @@ export class FoldersSurveysListComponent implements OnInit {
   subscriptions = new Subscription();
   folders: FolderModel[] = [];
   isLoading = true;
-  copyButtonTranslationKey = 'dashboard.table.copy-report-link';
+
+  copiedReportCode: string;
 
   constructor(
-    private dashboardService: DashboardHttpService
+    private dashboardService: DashboardHttpService,
+    private clipboardService: ClipboardService
   ) { }
 
   ngOnInit(): void {
@@ -44,8 +47,7 @@ export class FoldersSurveysListComponent implements OnInit {
 
   onCopySurveyReportLink(reportCode: string): void{
     const url = 'https://survey.porsline.ir/r/' + reportCode;
-    // this.clipboardService.copyFromContent(url);
-    this.copyButtonTranslationKey = 'dashboard.table.copied';
-
+    this.clipboardService.copy(url);
+    this.copiedReportCode = reportCode;
   }
 }

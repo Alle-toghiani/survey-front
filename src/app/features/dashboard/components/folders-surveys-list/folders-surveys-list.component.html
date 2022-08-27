@@ -43,7 +43,9 @@
                     nzType="dashed"
                     (click)="onCopySurveyReportLink(data.report_code)"
                     [disabled]="!data.report_code">
-              {{copyButtonTranslationKey | translate}}
+              <div class="w-[70px]">
+                {{ (copiedReportCode === data.report_code ? 'dashboard.table.copied' : 'dashboard.table.copy-report-link') | translate}}
+              </div>
             </button>
             <button nz-button
                     nzType="primary"
