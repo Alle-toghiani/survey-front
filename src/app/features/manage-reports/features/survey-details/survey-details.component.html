@@ -3,34 +3,8 @@
   <div class="question-title-container">{{questionData.title}}</div>
 
   <nz-divider [nzText]="'survey-details.chart-config'|translate" nzOrientation="left"></nz-divider>
-  <div class="details-container">
-    <div class="chart-config-container">
-      <div class="config-container">
-        <nz-input-group [nzAddOnBefore]="'charts.chart-type-label'|translate" dir="rtl">
-          <nz-select [ngModel]="selectedChartType" class="w-[150px]">
-            <nz-option class="text-start"
-                       *ngFor="let menuItem of chartTypesValues"
-                       [nzValue]="menuItem"
-                       [nzLabel]="'charts.type.'+ menuItem | translate"
-                       nzCustomContent="true"
-                       nz-tooltip
-                       [nzTooltipTitle]="menuItem + ' chart'">
-              <div class="w-full flex items-center gap-[10px]"
-                   (click)="reloadChart(menuItem)"
-                   [ngClass]="{'text-main fill-main': menuItem == selectedChartType}"
-                   dir="rtl">
-                <span>{{'charts.type.'+ menuItem | translate}}</span>
-                <svg-icon [src]="'assets/images/svg/chart-icons/' + menuItem + '-chart-svgrepo-com.svg'"
-                          class="flex"
-                          [svgStyle]="{'width.px': 25, 'height.px':25}"></svg-icon>
-              </div>
-            </nz-option>
-          </nz-select>
-        </nz-input-group>
-      </div>
-      <app-view-chart [setQuestionData]="chartData"></app-view-chart>
-    </div>
-  </div>
+
+  <app-chart-tabs [chartData]="questionData" class="py-20px block"></app-chart-tabs>
 
   <ng-container *ngIf="questionData.charts[0].caption">
     <nz-divider [nzText]="'survey-details.chart-description'|translate" nzOrientation="left"></nz-divider>
