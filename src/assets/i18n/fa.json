@@ -6,7 +6,10 @@
       "details": "جزئیات"
     },
     "submit": "ثبت",
-    "back": "بازگشت"
+    "back": "بازگشت",
+    "status": "وضعیت",
+    "active": "فعال",
+    "inactive": "غیرفعال"
   },
   "reports-list": {
     "view-preview": "مشاهده پیش نمایش",
@@ -26,7 +29,9 @@
       "survey-title": "عنوان پرسشنامه",
       "view-count": "تعداد بازدید",
       "answer-count": "تعداد پاسخ ها",
-      "question-count": "تعداد سوال"
+      "question-count": "تعداد سوال",
+      "copy-report-link": "دریافت لینک گزارش",
+      "copied": "کپی شد"
     },
     "actionbar.manage-mods": "مدیریت ادمین ها",
     "actionbar.manage-apiKey": "مدیریتی کلید API"
