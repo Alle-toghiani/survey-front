@@ -1,5 +1,7 @@
 <div class="main-container w-full">
-  <app-widget-container [title]="'dashboard.folders-list' | translate" class="min-h-[300px]">
+  <app-widget-container class="min-h-[300px]"
+                        [isLoading]="isLoading"
+                        [title]="'dashboard.folders-list' | translate">
     <nz-collapse>
       <nz-collapse-panel
         *ngFor="let folder of folders"

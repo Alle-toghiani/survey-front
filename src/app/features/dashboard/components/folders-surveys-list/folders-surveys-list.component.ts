@@ -13,6 +13,7 @@ export class FoldersSurveysListComponent implements OnInit {
 
   subscriptions = new Subscription();
   folders: FolderModel[] = [];
+  isLoading = true;
 
   constructor(
     private dashboardService: DashboardHttpService
@@ -30,6 +31,7 @@ export class FoldersSurveysListComponent implements OnInit {
     this.subscriptions.add(
       this.dashboardService.getFoldersAndSurveys().subscribe({
         next: (response) => {
+          this.isLoading = false;
           if (response.success){
             this.folders = response.data;
           }
