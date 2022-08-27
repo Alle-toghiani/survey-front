@@ -23,6 +23,32 @@
         </nz-form-control>
       </nz-form-item>
     </form>
+    <ng-container *ngIf="createdUser">
+      <nz-alert nzType="info" nzMessage="{{'mods.create-info'|translate}}" class="mb-20px"></nz-alert>
+
+      <nz-alert nzType="success" [nzMessage]="SuccessAlert">
+        <ng-template #SuccessAlert>
+          <div>
+            {{'auth.username'|translate}}: {{createdUser.username}}
+          </div>
+          <div>
+            {{'auth.password'|translate}}: {{createdUser.password}}
+          </div>
+          <div>
+            {{'mods.mod-login-link' | translate}}: {{createdUser.link}}
+            <button nz-button
+                    nzType="dashed"
+                    class="!inline mx-10px"
+                    (click)="onCopyLink()"
+                    [disabled]="!createdUser.link">
+              <div class="w-[40px]">
+                {{ copyBtnText | translate}}
+              </div>
+            </button>
+          </div>
+        </ng-template>
+      </nz-alert>
+    </ng-container>
 
     <nz-divider [nzText]="'mods.list'|translate" nzOrientation="left"></nz-divider>
 
