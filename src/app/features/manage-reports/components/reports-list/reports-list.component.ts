@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute} from "@angular/router";
 
 import { Subscription } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
 
-import { SurveyModel, SharedModel} from "@models";
+import { SharedModel, PorslineSurvey } from "@models";
 import { MainLayoutService } from "@services";
 import { RoutesEnum } from "@enums";
 
@@ -13,9 +13,9 @@ import { RoutesEnum } from "@enums";
   templateUrl: './reports-list.component.html',
   styleUrls: ['./reports-list.component.scss']
 })
-export class ReportsListComponent implements OnInit, AfterViewInit {
+export class ReportsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  survey: SurveyModel;
+  survey: PorslineSurvey;
   subscriptions = new Subscription();
   surveyId;
 
@@ -27,11 +27,15 @@ export class ReportsListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.surveyId = this.route.snapshot.params[RoutesEnum.SURVEY_ID_PARAM];
-    this.survey = (this.route.snapshot.data['surveyResolverData'] as SharedModel<SurveyModel>).data;
+    this.survey = (this.route.snapshot.data['surveyResolverData'] as SharedModel<PorslineSurvey>).data;
   }
 
   ngAfterViewInit() {
     this.initActionbar();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   initActionbar(): void{
