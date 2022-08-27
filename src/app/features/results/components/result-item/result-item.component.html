@@ -1,7 +1,7 @@
 <div class="item bg-white rounded-md p-[20px] mb-[20px]" *ngIf="data.charts.length>0">
   <nz-divider [nzText]="data.title" nzOrientation="center"></nz-divider>
 
-  <app-view-chart [setQuestionData]="data"></app-view-chart>
+  <app-view-chart [questionData]="data"></app-view-chart>
 
   <ng-container *ngIf="data.charts[0].caption">
     <nz-divider [nzText]="'survey-details.chart-description'|translate" nzOrientation="center"></nz-divider>

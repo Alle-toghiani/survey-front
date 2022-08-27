@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { SurveyQuestion } from "@models";
+import { PorslineQuestion } from "@models";
 
 @Component({
   selector: 'app-result-item',
@@ -9,8 +9,8 @@ import { SurveyQuestion } from "@models";
 })
 export class ResultItemComponent implements OnInit {
 
-  @Input() data: SurveyQuestion;
-  
+  @Input() data: PorslineQuestion;
+
   constructor() { }
 
   ngOnInit(): void {
