@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {FolderModel} from "@models";
-import {Subscription} from "rxjs";
-import {DashboardHttpService} from "../../services/dashboard-http.service";
+import { Subscription } from "rxjs";
+
+import { FolderModel } from "@models";
+import { DashboardHttpService } from "../../services/dashboard-http.service";
 
 @Component({
   selector: 'app-folders-surveys-list',
@@ -14,6 +15,7 @@ export class FoldersSurveysListComponent implements OnInit {
   subscriptions = new Subscription();
   folders: FolderModel[] = [];
   isLoading = true;
+  copyButtonTranslationKey = 'dashboard.table.copy-report-link';
 
   constructor(
     private dashboardService: DashboardHttpService
@@ -40,4 +42,10 @@ export class FoldersSurveysListComponent implements OnInit {
     )
   }
 
+  onCopySurveyReportLink(reportCode: string): void{
+    const url = 'https://survey.porsline.ir/r/' + reportCode;
+    // this.clipboardService.copyFromContent(url);
+    this.copyButtonTranslationKey = 'dashboard.table.copied';
+
+  }
 }
