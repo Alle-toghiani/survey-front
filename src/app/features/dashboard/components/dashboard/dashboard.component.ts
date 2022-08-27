@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         link: ['/'+RoutesEnum.DASHBOARD, RoutesEnum.API_TOKEN]
       },
       {
-        title:'dashboard.actionbar.manage-mods',
+        title:'mods.manage',
         iconType: 'crown',
         color:'orange',
         link: ['/'+RoutesEnum.DASHBOARD, RoutesEnum.ADMINS]
