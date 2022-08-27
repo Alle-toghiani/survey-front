@@ -43,4 +43,9 @@ export class DashboardHttpService {
     const url = environment.backendBaseUrl + 'auth/mods';
     return this.http.delete<SharedModel<any>>(url, {body: {username: modUsername}});
   }
+
+  initializeSurvey(createSurveyObj): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'survey/initialize';
+    return this.http.post<SharedModel<any>>(url, { ...createSurveyObj})
+  }
 }
