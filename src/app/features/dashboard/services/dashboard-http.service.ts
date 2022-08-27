@@ -28,4 +28,14 @@ export class DashboardHttpService {
     const url = environment.backendBaseUrl + 'auth/api-token';
     return this.http.post<SharedModel<any>>(url, {apiToken});
   }
+
+  createMod(modUsername: string): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'auth/mods/create';
+    return this.http.post<SharedModel<any>>(url, { username: modUsername});
+  }
+
+  getModsList(): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'auth/mods';
+    return this.http.get<SharedModel<any>>(url);
+  }
 }
