@@ -52,5 +52,25 @@
 
     <nz-divider [nzText]="'mods.list'|translate" nzOrientation="left"></nz-divider>
 
+    <app-table [listOfData]="modsList"
+               [headers]="[
+               'auth.username'|translate,
+               'mods.surveys'|translate,
+               'common.operation'|translate,
+               ]"
+               [tableCells]="[td_username,td_surveys,td_operations]"
+    ></app-table>
+    <ng-template #td_username let-data="data">
+      <div>{{data.username}}</div>
+    </ng-template>
+    <ng-template #td_surveys let-data="data">
+      <pre *ngIf="data.surveys">{{data.surveys | json}}</pre>
+    </ng-template>
+    <ng-template #td_operations let-data="data">
+      <div class="flex gap-10px justify-center">
+        <button nz-button nzType="default" nzDanger >{{"mods.delete"|translate}}</button>
+      </div>
+    </ng-template>
+
   </app-widget-container>
 </div>

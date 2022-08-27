@@ -9,6 +9,7 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzAlertModule} from "ng-zorro-antd/alert";
 
 import {WidgetContainerModule} from "@shared-components/src/app/widget-container/widget-container.module";
+import {TablesModule} from "@shared-components/src/app/tables/tables.module";
 import {Subscription} from "rxjs";
 import {DashboardHttpService} from "../../services/dashboard-http.service";
 import {RoutesEnum} from "@enums";
@@ -27,7 +28,8 @@ import {ClipboardService} from "ngx-clipboard";
     NzFormModule,
     NzButtonModule,
     NzDividerModule,
-    NzAlertModule
+    NzAlertModule,
+    TablesModule
   ],
   styleUrls: ['./moderators.component.scss']
 })
