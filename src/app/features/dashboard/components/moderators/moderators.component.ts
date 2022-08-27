@@ -104,4 +104,18 @@ export class ModeratorsComponent implements OnInit {
     this.copyBtnText = 'common.copied';
   }
 
+  onDeleteMod(modUsername: string){
+    this.subscriptions.add(
+      this.dashboardHttpService.deleteMod(modUsername).subscribe(
+        {
+          next: (deleteModRes) => {
+            if (deleteModRes.success){
+              this.getModsList();
+            }
+          }
+        }
+      )
+    )
+  }
+
 }

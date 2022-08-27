@@ -68,7 +68,7 @@
     </ng-template>
     <ng-template #td_operations let-data="data">
       <div class="flex gap-10px justify-center">
-        <button nz-button nzType="default" nzDanger >{{"mods.delete"|translate}}</button>
+        <button nz-button nzType="default" nzDanger (click)="onDeleteMod(data.username)">{{"mods.delete"|translate}}</button>
       </div>
     </ng-template>
 

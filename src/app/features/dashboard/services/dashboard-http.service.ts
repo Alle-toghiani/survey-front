@@ -38,4 +38,9 @@ export class DashboardHttpService {
     const url = environment.backendBaseUrl + 'auth/mods';
     return this.http.get<SharedModel<any>>(url);
   }
+
+  deleteMod(modUsername: string): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'auth/mods';
+    return this.http.delete<SharedModel<any>>(url, {body: {username: modUsername}});
+  }
 }
