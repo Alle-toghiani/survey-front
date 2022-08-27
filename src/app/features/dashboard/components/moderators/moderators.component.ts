@@ -30,9 +30,23 @@ export class ModeratorsComponent implements OnInit {
 
   isLoadingWidget = false;
 
+  isLoadingSubmitBtn = false;
+
+  createdModLink: string;
+
+  createModForm = new FormGroup({
+    username: new FormControl(null, Validators.required)
+  })
+
+  subscriptions = new Subscription();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submitForm(): void{
+
   }
 
 }

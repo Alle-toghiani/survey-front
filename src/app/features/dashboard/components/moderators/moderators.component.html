@@ -4,7 +4,27 @@
                         [title]="'mods.manage' | translate">
     <nz-divider [nzText]="'mods.create'|translate" nzOrientation="left"></nz-divider>
 
+    <form nz-form [formGroup]="createModForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="username">{{'auth.username'|translate}}</nz-form-label>
+        <nz-form-control>
+          <div class="flex">
+            <input nz-input
+                   formControlName="username"
+                   id="username"/>
+            <button nz-button nzType="primary"
+                    [nzLoading]="isLoadingSubmitBtn"
+                    [disabled]="!createModForm.valid"
+                    class="mx-10px"
+                    type="submit">
+              {{'common.submit'|translate}}
+            </button>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
     <nz-divider [nzText]="'mods.list'|translate" nzOrientation="left"></nz-divider>
-    
+
   </app-widget-container>
 </div>
