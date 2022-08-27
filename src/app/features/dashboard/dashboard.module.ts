@@ -11,12 +11,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FoldersSurveysListComponent } from './components/folders-surveys-list/folders-surveys-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
+import { ModeratorsComponent } from './components/moderators/moderators.component';
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    FoldersSurveysListComponent
+    FoldersSurveysListComponent,
+    ModeratorsComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-lay
     NzCollapseModule,
     NzButtonModule,
     TablesModule,
-    MainLayoutModule
+    MainLayoutModule,
+    NzDividerModule
   ]
 })
 export class DashboardModule { }

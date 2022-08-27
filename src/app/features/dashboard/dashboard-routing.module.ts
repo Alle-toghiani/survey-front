@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RoutesEnum} from "@enums";
 import {FoldersSurveysListComponent} from "./components/folders-surveys-list/folders-surveys-list.component";
+import {ModeratorsComponent} from "./components/moderators/moderators.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: RoutesEnum.API_TOKEN,
         loadComponent: () => import('./components/api-token-page/api-token-page.component').then((m)=> m.ApiTokenPageComponent)
+      },
+      {
+        path : RoutesEnum.ADMINS,
+        component: ModeratorsComponent
       }
     ]
   },
