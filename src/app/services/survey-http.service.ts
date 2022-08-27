@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
-import {EMPTY, Observable} from "rxjs";
+import { EMPTY, map, Observable } from "rxjs";
 
-import {environment} from "@environments/environment";
-import {CustomChartSettings, SharedModel, SurveyModel, SurveyQuestion} from "@models";
+import { environment } from "@environments/environment";
+import {
+  CustomChartSettings, PorslineQuestion, SharedModel,
+  SurveyReport, PorslineSurvey, PorslineReport
+} from "@models";
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +18,32 @@ export class SurveyHttpService {
     private http: HttpClient
   ) { }
 
-  getSurveyReportData(reportId: string): Observable<SharedModel<SurveyModel>>{
+  getReport(reportId: string): Observable<SharedModel<SurveyReport>>{
     const url = environment.backendBaseUrl + 'survey/r/' + reportId;
-    return this.http.get<SharedModel<SurveyModel>>(url);
+    return this.http.get<SharedModel<PorslineReport>>(url).pipe(map(
+      report => (
+        {
+          ...report,
+          data: {
+            ...report.data,
+            questions: Object.values(report.data.questions)
+          }
+        })
+    ));
   }
 
-  getSurvey(surveyId: number): Observable<SharedModel<SurveyModel>>{
-    return this.http.get<SharedModel<SurveyModel>>(environment.backendBaseUrl + 'survey/' + surveyId);
+  getSurvey(surveyId: number): Observable<SharedModel<PorslineSurvey>>{
+    const url = environment.backendBaseUrl + 'survey/' + surveyId;
+
+    return this.http.get<SharedModel<PorslineSurvey>>(url)
   }
 
-  getSurveyQuestionDetails(sid: string, qid: string): Observable<SharedModel<SurveyQuestion>>{
-    return this.http.get<SharedModel<SurveyQuestion>>(environment.backendBaseUrl + 'survey/' + sid + '/details/' + qid)
+  getQuestion(sid: string, qid: string): Observable<SharedModel<PorslineQuestion>>{
+    return this.http.get<SharedModel<PorslineQuestion>>(environment.backendBaseUrl + 'survey/' + sid + '/details/' + qid)
+  }
+
+  getPreview(sid: string): Observable<SharedModel<PorslineQuestion[]>>{
+    return this.http.get<SharedModel<PorslineQuestion[]>>(environment.backendBaseUrl + 'survey/' + sid + '/preview/')
   }
 
   updateChartSettings(sid: string, qid: string, data: CustomChartSettings): Observable<SharedModel<any>>{
