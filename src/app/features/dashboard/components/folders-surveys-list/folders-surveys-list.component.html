@@ -5,7 +5,7 @@
     <nz-collapse>
       <nz-collapse-panel
         *ngFor="let folder of folders"
-        [nzHeader]="folder.name"
+        [nzHeader]="CollapseHeader"
         [nzActive]="folder.active"
         [nzDisabled]="folder.surveys.length === 0"
       >
@@ -20,6 +20,18 @@
                ]"
                    [tableCells]="[td_1,td_2,td_3,td_4,td_5,td_6]"
         ></app-table>
+
+        <ng-template #CollapseHeader>
+          <div class="flex justify-between w-full">
+            <div>{{folder.name}}</div>
+            <button nz-button
+                    nzType="primary"
+                    (click)="onShowCreateModal(folder.id, $event)"
+                    >
+              {{"dashboard.create-survey"|translate}}
+            </button>
+          </div>
+        </ng-template>
 
         <ng-template #td_1 let-data="data">
           <div>{{data.name}}</div>
@@ -59,3 +71,38 @@
   </app-widget-container>
 </div>
 
+<nz-modal [(nzVisible)]="isVisibleModal"
+          [nzTitle]="'dashboard.create-survey-title'|translate"
+          [nzFooter]="ModalFooter">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="createSurveyForm" class="flex justify-center">
+      <nz-form-item>
+        <nz-form-control>
+          <div class="flex">
+            <input nz-input
+                   formControlName="name"
+                   id="name"
+                   size="43"/>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <nz-alert *ngIf="surveyCreatedSuccessfully" nzType="success" [nzMessage]="'dashboard.created-successfully' | translate"></nz-alert>
+  </ng-container>
+  <ng-template #ModalFooter>
+    <div class="flex justify-center">
+      <button nz-button nzType="primary"
+              [nzLoading]="isLoadingModalSubmitBtn"
+              [disabled]="!createSurveyForm.valid"
+              class="mx-10px"
+              (click)="onModalSubmit()">
+        {{'common.submit'|translate}}
+      </button>
+      <button nz-button nzType="default"
+              class="mx-10px"
+              (click)="onModalCancel()">
+        {{'common.back'|translate}}
+      </button>
+    </div>
+  </ng-template>
+</nz-modal>
