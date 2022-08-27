@@ -16,6 +16,7 @@
   "reports-list": {
     "view-preview": "مشاهده پیش نمایش",
     "widget-title": "لیست سوالات",
+    "create": "ایجاد",
     "table": {
       "title": "عنوان سوال",
       "choices-count": "تعداد گزینه",
@@ -36,7 +37,10 @@
       "copied": "کپی شد"
     },
     "actionbar.manage-mods": "مدیریت ادمین ها",
-    "actionbar.manage-apiKey": "مدیریتی کلید API"
+    "actionbar.manage-apiKey": "مدیریتی کلید API",
+    "create-survey": "ایجاد پرسشنامه جدید",
+    "create-survey-title": "لطفا نام پرسشنامه را وارد کنید.",
+    "created-successfully": "پرسشنامه با موفقیت ایجاد شد"
   },
   "survey-details": {
     "save-changes": "ذخیره تغییرات",
