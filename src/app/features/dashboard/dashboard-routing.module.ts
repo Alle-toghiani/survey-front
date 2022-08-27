@@ -26,7 +26,7 @@ const routes: Routes = [
       },
       {
         path : RoutesEnum.ADMINS,
-        component: ModeratorsComponent
+        loadComponent: () => import('./components/moderators/moderators.component').then((m) => m.ModeratorsComponent)
       }
     ]
   },

@@ -5,21 +5,20 @@ import { TranslateModule } from "@ngx-translate/core";
 import { NzCollapseModule } from "ng-zorro-antd/collapse";
 import { NzButtonModule } from "ng-zorro-antd/button";
 
-import { TablesModule } from "@shared-components/src/app/tables/tables.module";
+import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
 import { WidgetContainerModule } from "@shared-components/src/app/widget-container/widget-container.module";
+import { TablesModule } from "@shared-components/src/app/tables/tables.module";
+
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FoldersSurveysListComponent } from './components/folders-surveys-list/folders-surveys-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MainLayoutModule} from "@shared-components/src/app/main-layout/main-layout.module";
-import { ModeratorsComponent } from './components/moderators/moderators.component';
-import {NzDividerModule} from "ng-zorro-antd/divider";
+
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    FoldersSurveysListComponent,
-    ModeratorsComponent
+    FoldersSurveysListComponent
   ],
   imports: [
     CommonModule,
@@ -29,8 +28,7 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
     NzCollapseModule,
     NzButtonModule,
     TablesModule,
-    MainLayoutModule,
-    NzDividerModule
+    MainLayoutModule
   ]
 })
 export class DashboardModule { }
