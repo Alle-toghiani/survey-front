@@ -1,5 +1,14 @@
 <div class="results-container">
-  <div class="item-container" *ngFor="let item of survey.data">
-    <app-result-item [data]="item"></app-result-item>
+  <div class="item-container" *ngFor="let question of questionsArray">
+    <div class="item bg-white rounded-md p-[20px] mb-[20px]" *ngIf="question.charts.length>0">
+      <nz-divider [nzText]="question.title" nzOrientation="center"></nz-divider>
+
+      <app-chart-tabs [chartData]="question"></app-chart-tabs>
+
+      <ng-container *ngIf="question.charts[0].caption">
+        <nz-divider [nzText]="'survey-details.chart-description'|translate" nzOrientation="center"></nz-divider>
+        <div class="chart-caption-title">{{question.charts[0].caption}}</div>
+      </ng-container>
+    </div>
   </div>
 </div>
