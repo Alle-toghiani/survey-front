@@ -5,12 +5,11 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
-import {EMPTY, map, Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 
 import { RoutesEnum } from "@enums";
 import { SharedModel, SurveyModel, SurveyQuestion } from "@models";
-import { CustomValidatorsService } from "./custom-validators.service";
-import { SurveyHttpService } from "./survey-http.service";
+import { CustomValidatorsService, SurveyHttpService } from "@services";
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +21,19 @@ export class SurveyDetailsResolver implements Resolve<SharedModel<SurveyModel | 
     private router: Router
   ) {
   }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<SharedModel<SurveyModel | SurveyQuestion>> | Promise<SharedModel<SurveyModel | SurveyQuestion>> | SharedModel<SurveyModel | SurveyQuestion>{
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<SharedModel<any>> |
+    Promise<SharedModel<any>> |
+    SharedModel<any> {
     const sid = route.params[RoutesEnum.SURVEY_ID_PARAM];
     const qid = route.params[RoutesEnum.QUESTION_ID_PARAM];
     const reportCode = route.params[RoutesEnum.REPORT_PARAM];
     if ( reportCode && this.validatorService.isReportCodeValid(reportCode)){
-      return this.surveyHttpService.getSurveyReportData(reportCode).pipe(map(
-        item => ({...item, data: {data: Object.values(item.data['questions'])} as SurveyModel})
-      ))
+      return this.surveyHttpService.getReport(reportCode)
     }
     else if ( sid && this.validatorService.isSurveyIdValid(sid)) {
     if (this.validatorService.isQuestionIdValid(qid)){
-      return this.surveyHttpService.getSurveyQuestionDetails(sid, qid);
+      return this.surveyHttpService.getQuestion(sid, qid);
     }
     return this.surveyHttpService.getSurvey(sid);
     //TODO handle error
