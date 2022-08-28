@@ -10,6 +10,11 @@ export class WelcomeTabComponent implements OnInit {
 
   @Input() surveyId;
   @Input() submitIsLoading;
+  @Input() set onReset(data){
+    if (data === true) {
+      this.form.reset();
+    }
+  };
 
   @Output() data = new EventEmitter<any>();
 
