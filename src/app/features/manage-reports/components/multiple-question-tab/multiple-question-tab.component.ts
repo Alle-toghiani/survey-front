@@ -18,6 +18,11 @@ export class MultipleQuestionTabComponent implements OnInit {
   @Input() surveyId;
   @Input() submitIsLoading;
   @Input() order;
+  @Input() set onReset(data){
+    if (data === true) {
+      this.validateForm.reset();
+    }
+  };
 
   @Output() data = new EventEmitter<any>();
 
