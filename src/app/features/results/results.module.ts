@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NzDividerModule } from "ng-zorro-antd/divider";
 import { TranslateModule } from "@ngx-translate/core";
+import { NzEmptyModule} from "ng-zorro-antd/empty";
 
 import { ViewChartModule } from "@shared-components/src/app/view-chart/view-chart.module";
 import { ResultsRoutingModule } from './results-routing.module';
@@ -19,7 +20,8 @@ import { ResultItemComponent } from './components/result-item/result-item.compon
     ResultsRoutingModule,
     NzDividerModule,
     TranslateModule,
-    ViewChartModule
+    ViewChartModule,
+    NzEmptyModule
   ]
 })
 export class ResultsModule { }
