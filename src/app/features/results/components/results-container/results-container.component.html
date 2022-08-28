@@ -11,4 +11,11 @@
       </ng-container>
     </div>
   </div>
+
+  <div class="item-container" *ngIf="questionsArray.length === 0">
+    <div class="item bg-white rounded-md p-[20px] mb-[20px] h-300px w-full flex justify-center items-center">
+      <nz-empty [nzNotFoundContent]="'common.list-is-empty'|translate"></nz-empty>
+    </div>
+  </div>
 </div>
+
