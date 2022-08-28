@@ -25,4 +25,14 @@ export class ManageReportsHttpService {
     const url = environment.backendBaseUrl + 'survey/' + sid + '/details/' + qid
     return this.http.put<SharedModel<any>>(url, data);
   }
+
+  postQuestion(sid:string, data: any, qUrl: string): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'survey/' + sid + '/' + qUrl;
+    return this.http.post<any>(url, data);
+  }
+
+  deleteQuestion(sid: string, qid: string): Observable<SharedModel<any>>{
+    const url = environment.backendBaseUrl + 'survey/' + sid + '/' + qid;
+    return this.http.delete<any>(url);
+  }
 }
