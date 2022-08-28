@@ -1,0 +1,51 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+  <nz-form-label>{{'survey-details.multi.title'|translate}}</nz-form-label>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group>
+        <textarea  nz-input rows="3" formControlName="title"></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+
+  <nz-form-label>{{'survey-details.multi.choices'|translate}}</nz-form-label>
+  <nz-form-item *ngFor="let control of listOfControl; let i = index">
+    <nz-form-control
+      [nzXs]="24"
+      [nzSm]="20"
+      [nzOffset]="i === 0 ? 0 : 4"
+      nzErrorTip="Please input passenger's name or delete this field."
+    >
+      <input
+        class="passenger-input"
+        nz-input
+        [placeholder]="'survey-details.multi.choice-placeholder' | translate"
+        [attr.id]="control.id"
+        [formControlName]="control.controlInstance"
+      />
+      <span
+        nz-icon
+        nzType="minus-circle-o"
+        class="dynamic-delete-button"
+        (click)="removeField(control, $event)"
+      ></span>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+      <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
+        <span nz-icon nzType="plus"></span>
+        {{'survey-details.multi.add-choice'| translate}}
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid" [nzLoading]="submitIsLoading">{{'common.submit' | translate}}</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
