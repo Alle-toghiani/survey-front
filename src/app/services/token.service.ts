@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
+
+import { Subscription } from "rxjs";
 import { JwtHelperService } from "@auth0/angular-jwt";
-import {Router} from "@angular/router";
-import {RoutesEnum} from "@enums";
-import {NzNotificationService} from "ng-zorro-antd/notification";
+import { NzNotificationService } from "ng-zorro-antd/notification";
 import {TranslateService} from "@ngx-translate/core";
-import {Subscription} from "rxjs";
+
+import {RoutesEnum} from "@enums";
+import {MainLayoutService} from "./main-layout.service";
 
 const enum LocalStorageKeys {
   CLIENT_TOKEN = 'client-token'
@@ -21,6 +24,7 @@ export class TokenService {
   constructor(
     private router: Router,
     private notificationService: NzNotificationService,
+    private mainLayoutService: MainLayoutService
     // private translateService: TranslateService
   ) {
     this.jwtService = new JwtHelperService();
@@ -32,6 +36,7 @@ export class TokenService {
         const decodedToken = this.jwtService.decodeToken(token);
         if (decodedToken.username){
           localStorage.setItem(LocalStorageKeys.CLIENT_TOKEN, token);
+          this.mainLayoutService.headerConfigSubject.next({username: decodedToken.username, role: decodedToken.role})
           return true;
         }
       } catch (e) {
@@ -46,19 +51,23 @@ export class TokenService {
     const token = localStorage.getItem(LocalStorageKeys.CLIENT_TOKEN);
     if (token){
       if ( !this.jwtService.isTokenExpired(token)){
+        const decodedToken = this.jwtService.decodeToken(token);
+        this.mainLayoutService.headerConfigSubject.next({username: decodedToken.username, role: decodedToken.role})
         return token;
       } else {
+        this.mainLayoutService.headerConfigSubject.next({username: null, role: 'VIEWER'})
         this.onTokenExpired();
       }
     } else {
-      this.onNavigateToLogin();
+      this.mainLayoutService.headerConfigSubject.next({username: null, role: 'VIEWER'})
     }
     return undefined;
   }
 
   isUserAdmin(): boolean{
     const token = this.getToken();
-    return !(this.jwtService.decodeToken(token).parentId);
+    const decodedToken = this.jwtService.decodeToken(token);
+    return decodedToken.role === 'ADMIN';
   }
 
   isApiTokenValid(): boolean {
@@ -80,6 +89,7 @@ export class TokenService {
   }
 
   onSignOut(): void{
+    this.mainLayoutService.headerConfigSubject.next({username: null, role: 'VIEWER'})
     this.onNavigateToLogin();
   }
 
