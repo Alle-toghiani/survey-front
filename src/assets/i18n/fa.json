@@ -23,7 +23,8 @@
       "chart-type": "نوع نمودار",
       "description": "توضیحات",
       "visibility":"نمایش",
-      "operation": "عملیات"
+      "operation": "عملیات",
+      "question-type": "نوع سوال"
     }
   },
   "dashboard": {
@@ -47,7 +48,26 @@
     "widget-title": "جزئیات نمودار",
     "title": "عنوان سوال",
     "chart-config": "ویرایش جزئیات نمودار",
-    "chart-description": "توضیحات نمودار"
+    "chart-description": "توضیحات نمودار",
+    "add-question": "افزودن سوال جدید",
+    "create": {
+      "welcome": "صفحه خوش آمد گویی",
+      "multipleChoice": "چند گزینه ای",
+      "text-questions-long": "متنی با پاسخ بلند",
+      "text-questions-short": "متنی با پاسخ کوتاه",
+      "submitted-successfully": "پرسش با موفقیت ثبت شد"
+    },
+    "welcome":{
+      "title": "عنوان",
+      "description": "توضیحات",
+      "enter": "دکمه ورود"
+    },
+    "multi": {
+      "title": "عنوان سوال",
+      "add-choice": "افزودن گزینه",
+      "choice-placeholder": "گزینه",
+      "choices": "گزینه ها"
+    }
   },
   "not-found-page": {
     "title": "صفحه مورد نظر پیدا نشد!",
