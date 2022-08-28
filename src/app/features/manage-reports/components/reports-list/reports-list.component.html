@@ -10,6 +10,7 @@
           <app-welcome-tab
             [surveyId]="surveyId"
             (data)="submitQuestion($event, 'welcomequestion')"
+            [onReset]="questionSubmittedSuccessfully"
             [submitIsLoading]="submitISLoading">
           </app-welcome-tab>
         </div>
@@ -19,6 +20,7 @@
       >
         <app-multiple-question-tab [surveyId]="surveyId"
                                    (data)="submitQuestion($event, 'multiplechoicequestions')"
+                                   [onReset]="questionSubmittedSuccessfully"
                                    [order]="survey.questions.length"
                                    [submitIsLoading]="submitISLoading">
         </app-multiple-question-tab>
