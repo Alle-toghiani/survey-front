@@ -5,6 +5,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RoutesEnum} from "@enums";
 import {FoldersSurveysListComponent} from "./components/folders-surveys-list/folders-surveys-list.component";
 import {ModeratorsComponent} from "./components/moderators/moderators.component";
+import {AdminGuard} from "../../guards/admin.guard";
 
 const routes: Routes = [
   {
@@ -22,11 +23,13 @@ const routes: Routes = [
       },
       {
         path: RoutesEnum.API_TOKEN,
-        loadComponent: () => import('./components/api-token-page/api-token-page.component').then((m)=> m.ApiTokenPageComponent)
+        loadComponent: () => import('./components/api-token-page/api-token-page.component').then((m)=> m.ApiTokenPageComponent),
+        canActivate: [AdminGuard]
       },
       {
         path : RoutesEnum.ADMINS,
-        loadComponent: () => import('./components/moderators/moderators.component').then((m) => m.ModeratorsComponent)
+        loadComponent: () => import('./components/moderators/moderators.component').then((m) => m.ModeratorsComponent),
+        canActivate: [AdminGuard]
       }
     ]
   },
