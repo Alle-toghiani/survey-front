@@ -11,7 +11,8 @@
     "active": "فعال",
     "inactive": "غیرفعال",
     "copy": "کپی",
-    "copied": "کپی شد"
+    "copied": "کپی شد",
+    "list-is-empty": "اطلاعاتی برای نمایش وجود ندارد"
   },
   "reports-list": {
     "view-preview": "مشاهده پیش نمایش",
@@ -103,6 +104,7 @@
     "confirm-password": "تکرار کلمه عبور",
     "forgot-password": "فراموشی رمز عبور",
     "login": "ورود",
+    "signout": "خروج از حساب کاربری",
     "login-with-account": "ورود با حساب کاربری",
     "create-account": "ایجاد حساب کاربری",
     "submit-account": "ثبت حساب",
