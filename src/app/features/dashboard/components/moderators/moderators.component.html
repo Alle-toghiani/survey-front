@@ -64,7 +64,7 @@
       <div>{{data.username}}</div>
     </ng-template>
     <ng-template #td_surveys let-data="data">
-      <pre *ngIf="data.surveys">{{data.surveys | json}}</pre>
+      <div *ngFor="let sid of data.surveys">{{sid}}</div>
     </ng-template>
     <ng-template #td_operations let-data="data">
       <div class="flex gap-10px justify-center">
