@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { MainLayoutService } from "@services";
+import {MainLayoutService, TokenService} from "@services";
 import { PorslineQuestion, SharedModel, SurveyReport } from "@models";
 import { RoutesEnum } from "@enums";
 import { Question } from "../../../../models/porsline-models/porsline-reports.model";
-import { SurveyHttpService } from "../../../../services/survey-http.service";
+import { SurveyHttpService } from "@services";
 
 @Component({
   selector: 'app-results-container',
@@ -23,7 +23,8 @@ export class ResultsContainerComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private mainLayoutService: MainLayoutService,
-    private surveyHttpService: SurveyHttpService
+    private surveyHttpService: SurveyHttpService,
+    private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
@@ -41,17 +42,19 @@ export class ResultsContainerComponent implements OnInit {
     if (this.route.snapshot.params[RoutesEnum.REPORT_PARAM]){
       this.isListMode = false;
       this.questionsArray = (this.route.snapshot.data['surveyResolverData'] as SharedModel<SurveyReport>).data.questions;
-      this.mainLayoutService.actionbarConfigSubject.next(
-        {
-          isBackDisabled: true,
-          actions: [{
-            title: 'results.actionbar.users-login',
-            iconType: 'user',
-            color: 'orange',
-            link: ['/' + RoutesEnum.AUTH, RoutesEnum.LOGIN]
-          }]
-        }
-      )
+      if (!this.tokenService.getToken()){
+        this.mainLayoutService.actionbarConfigSubject.next(
+          {
+            isBackDisabled: true,
+            actions: [{
+              title: 'results.actionbar.users-login',
+              iconType: 'user',
+              color: 'orange',
+              link: ['/' + RoutesEnum.AUTH, RoutesEnum.LOGIN]
+            }]
+          }
+        )
+      }
     }
   }
 }
