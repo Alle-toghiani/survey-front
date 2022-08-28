@@ -37,7 +37,7 @@
   </app-widget-container>
 
   <app-widget-container [title]="'reports-list.widget-title' | translate" [isLoading]="isLoadingList">
-    <app-table [listOfData]="!!survey ? survey.questions : []"
+    <app-table [listOfData]="!!survey ? survey.questions : []" [emptyView]="EmptyView"
                [headers]="[
                'reports-list.table.title'|translate,
                'reports-list.table.question-type'|translate,
@@ -46,6 +46,10 @@
                ]"
                [tableCells]="[td_1, td_type,td_2,td_3]"
     ></app-table>
+
+    <ng-template #EmptyView>
+      <nz-empty [nzNotFoundContent]="'common.list-is-empty'|translate"></nz-empty>
+    </ng-template>
 
     <ng-template #td_1 let-data="data">
       <div>{{data.title}}</div>
