@@ -1,23 +1,64 @@
-<div class="main-container w-full">
-  <app-widget-container [title]="'reports-list.widget-title' | translate">
+<div class="main-container w-full flex flex-col">
+  <app-widget-container [title]="'survey-details.add-question' | translate" class="mb-20px">
+    <nz-tabset
+      style="display: flex; justify-content: center"
+      nzTabPosition="left">
+      <nz-tab
+        [nzTitle]="'survey-details.create.welcome'| translate"
+      >
+        <div class="w-[800px] h-[350px]">
+          <app-welcome-tab
+            [surveyId]="surveyId"
+            (data)="submitQuestion($event, 'welcomequestion')"
+            [submitIsLoading]="submitISLoading">
+          </app-welcome-tab>
+        </div>
+      </nz-tab>
+      <nz-tab
+        [nzTitle]="'survey-details.create.multipleChoice'| translate"
+      >
+        <app-multiple-question-tab [surveyId]="surveyId"
+                                   (data)="submitQuestion($event, 'multiplechoicequestions')"
+                                   [order]="survey.questions.length"
+                                   [submitIsLoading]="submitISLoading">
+        </app-multiple-question-tab>
+      </nz-tab>
+      <nz-tab
+        [nzTitle]="'survey-details.create.text-questions-long'| translate"
+      >
+      </nz-tab>
+      <nz-tab
+        [nzTitle]="'survey-details.create.text-questions-short'| translate"
+      >
+      </nz-tab>
+    </nz-tabset>
+
+    <nz-alert *ngIf="questionSubmittedSuccessfully" nzType="success" [nzMessage]="'survey-details.create.submitted-successfully'|translate"></nz-alert>
+  </app-widget-container>
+
+  <app-widget-container [title]="'reports-list.widget-title' | translate" [isLoading]="isLoadingList">
     <app-table [listOfData]="!!survey ? survey.questions : []"
                [headers]="[
                'reports-list.table.title'|translate,
+               'reports-list.table.question-type'|translate,
                'reports-list.table.choices-count'|translate,
                'reports-list.table.operation'|translate
                ]"
-               [tableCells]="[td_1,td_2,td_3]"
+               [tableCells]="[td_1, td_type,td_2,td_3]"
     ></app-table>
 
     <ng-template #td_1 let-data="data">
       <div>{{data.title}}</div>
     </ng-template>
+    <ng-template #td_type let-data="data">
+      <div>{{getQuestionType(data.type, data.answer_type) | translate}}</div>
+    </ng-template>
     <ng-template #td_2 let-data="data">
-      <div>{{data.choices.length}}</div>
+      <div *ngIf="data.type === 3">{{data.choices.length}}</div>
     </ng-template>
     <ng-template #td_3 let-data="data">
       <div class="flex gap-10px justify-center">
-        <button nz-button nzType="default" nzDanger >{{"common.operations.delete"|translate}}</button>
+        <button nz-button nzType="default" nzDanger (click)="deleteQuestion(data.id)">{{"common.operations.delete"|translate}}</button>
         <button nz-button nzType="primary" [routerLink]="['details', data.id]">{{"common.operations.details"|translate}}</button>
       </div>
     </ng-template>
