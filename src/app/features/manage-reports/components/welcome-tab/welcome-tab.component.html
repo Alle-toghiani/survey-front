@@ -1,0 +1,35 @@
+<form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+
+  <nz-form-item>
+    <nz-form-label>{{'survey-details.welcome.title'|translate}}</nz-form-label>
+    <nz-form-control>
+      <nz-input-group>
+        <input formControlName="title" nz-input placeholder="title" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>{{'survey-details.welcome.description'|translate}}</nz-form-label>
+    <nz-form-control>
+      <nz-input-group>
+        <textarea  nz-input rows="3" formControlName="description"></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>{{'survey-details.welcome.enter'|translate}}</nz-form-label>
+    <nz-form-control>
+      <nz-input-group>
+        <input formControlName="enterText" nz-input/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!form.valid" [nzLoading]="submitIsLoading">{{'common.submit' | translate}}</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
