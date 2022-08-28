@@ -7,14 +7,16 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTabsModule } from "ng-zorro-antd/tabs";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzIconModule } from "ng-zorro-antd/icon";
+import { NzAlertModule } from "ng-zorro-antd/alert";
+import { NzEmptyModule } from "ng-zorro-antd/empty";
 
 import { WidgetContainerModule} from "@shared-components/src/app/widget-container/widget-container.module";
 import { TablesModule} from "@shared-components/src/app/tables/tables.module";
 import { ManageReportsRoutingModule } from './manage-reports-routing.module';
 import { ReportsListComponent } from './components/reports-list/reports-list.component';
 import { WelcomeTabComponent } from './components/welcome-tab/welcome-tab.component';
-import {NzAlertModule} from "ng-zorro-antd/alert";
 import { MultipleQuestionTabComponent } from './components/multiple-question-tab/multiple-question-tab.component';
+
 
 
 
@@ -36,7 +38,8 @@ import { MultipleQuestionTabComponent } from './components/multiple-question-tab
     ReactiveFormsModule,
     NzFormModule,
     NzAlertModule,
-    NzIconModule
+    NzIconModule,
+    NzEmptyModule
   ]
 })
 export class ManageReportsModule { }
