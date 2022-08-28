@@ -19,20 +19,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   headerConfig: HeaderModel;
   actionbarConfig: ActionbarModel = {
     isBackDisabled: true,
-    actions: [
-      {
-        title: 'dashboard.actionbar.manage-apiKey',
-        iconType: 'key',
-        color:'green',
-        link: ['/'+RoutesEnum.DASHBOARD, RoutesEnum.API_TOKEN]
-      },
-      {
-        title:'mods.manage',
-        iconType: 'crown',
-        color:'orange',
-        link: ['/'+RoutesEnum.DASHBOARD, RoutesEnum.ADMINS]
-      }
-    ]
+    actions: []
   }
 
   subscriptions = new Subscription();
@@ -60,7 +47,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   private initDashboardActionbar(): void{
     if (this.tokenService.isUserAdmin()){
-      this.layoutService.actionbarConfigSubject.next(this.actionbarConfig);
+      this.actionbarConfig.actions = [
+        {
+          title: 'dashboard.actionbar.manage-apiKey',
+          iconType: 'key',
+          color:'green',
+          link: ['/'+RoutesEnum.DASHBOARD, RoutesEnum.API_TOKEN]
+        },
+        {
+          title:'mods.manage',
+          iconType: 'crown',
+          color:'orange',
+          link: ['/'+RoutesEnum.DASHBOARD, RoutesEnum.ADMINS]
+        }
+      ]
     }
+    this.layoutService.actionbarConfigSubject.next(this.actionbarConfig);
   }
 }
