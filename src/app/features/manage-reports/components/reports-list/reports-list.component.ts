@@ -120,6 +120,9 @@ export class ReportsListComponent implements OnInit, AfterViewInit, OnDestroy {
             if (postQuestionRes.success){
               this.questionSubmittedSuccessfully = true;
               this.getQuestions();
+              setTimeout(() => {
+                this.questionSubmittedSuccessfully = false;
+              }, 3000);
             }
           },
           error: err => {
