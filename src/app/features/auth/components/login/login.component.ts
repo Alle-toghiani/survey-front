@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 import {Subscription} from "rxjs";
 
@@ -28,10 +28,17 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthHttpService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private tokenSerice: TokenService
   ) {}
 
   ngOnInit(): void {
+    const routeParams = this.activatedRoute.snapshot.queryParams as {username:string, password:string};
+    if (routeParams){
+      this.loginForm.controls.username.setValue(routeParams.username);
+      this.loginForm.controls.password.setValue(routeParams.password);
+      this.submitForm();
+    }
   }
 
   submitForm(): void {
